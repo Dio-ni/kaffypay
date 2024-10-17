@@ -1,0 +1,63 @@
+@import "../../styles/mixins.scss";
+
+.footer{
+  background: #111111;
+  color: #F0F0F0;
+  
+}
+.footer_container{
+  display: flex;
+  justify-content: space-between;
+  padding-block: 100px;
+  flex-wrap: wrap;
+  
+
+  @include respond(phone){
+    flex-direction: column;
+    gap:50px;
+    align-items: center;
+    text-align: center;
+  }
+
+}
+.footer_left{
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  gap:30px;
+  @include respond(phone){
+    width: 50%;
+    align-items: center;
+  }
+}
+
+.socials{
+  display: flex;
+  gap:18px;
+
+  img{
+    width: 38px;
+    border-radius: 100%;
+  }
+}
+.footer_right{
+  display: flex;
+  gap:140px;
+  @include respond(phone){
+    flex-direction: column;
+  }
+  div{
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+  }
+  
+  h4{
+    font-size: 20px;
+  }
+  ul{
+    display: flex;
+    gap:20px;
+    flex-direction: column;
+  }
+}

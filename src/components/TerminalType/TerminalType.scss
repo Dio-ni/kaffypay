@@ -1,0 +1,75 @@
+@import "../../styles/mixins.scss";
+
+.terminal_type{
+    padding-block: 100px;
+    background-color: #F5F5F7;
+
+    &_container{
+
+        display: flex;
+        flex-direction: column;
+        gap:60px;
+        align-items: center;
+
+        h2{
+            font-size: 64px;
+        }
+        @include respond(tab-port){
+            text-align: center;
+        }
+
+        .terminals{
+            position: relative;
+            display: flex;
+            gap:60px;
+            width: 100%;
+
+            @include respond(tab-port){
+                flex-direction: column;
+                width: 80%;
+            }
+           
+            
+            &_card {
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center; 
+                text-align: center;
+                justify-content: end; 
+                background: #FFFFFF;
+                height: 598px;
+                overflow: hidden;
+                width: 50%; 
+                border-radius: 30px;
+                position: relative;
+                gap:60px;
+                padding: 40px;
+
+                @include respond(tab-port){
+                    width: 100%;
+                }
+                
+                h3{
+                    font-size: 36px;
+                    font-weight: 500;
+                }
+                p{
+                    font-size: 18px;
+                    font-weight: 400;
+                }
+                img {
+                    width: auto; 
+                    height: auto;
+                    max-width: 100%; 
+                    
+                }
+                
+            }
+            &_card:nth-child(1) *{
+                // position: relative;
+                top:-20%;
+        
+            }
+        }
+    }
+}

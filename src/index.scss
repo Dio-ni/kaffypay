@@ -1,0 +1,68 @@
+@import "./styles/mixins.scss";
+
+:root{
+    --spanish-gray:#969696;
+    --cultured:#f6f6f6;
+    --black:#151515;
+    --eerie-black:#1b1b1b;
+    --black-olive:#383f3e;
+    --gradient: linear-gradient(to right,#3fe8ab,#78cdcd);
+    --grey:#889097;
+    --back-grey:#F5F5F7;
+    --btn-color-blue: #007AFF;
+}
+
+*,*::before, *::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+    // outline: none;
+    text-decoration: none;
+    list-style: none;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+body{
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-family: "Golos Text", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    
+
+}
+
+img{
+    display: block;
+}
+
+.wrapper{
+    max-width: 1440px;
+    padding-inline: 5rem;
+    margin-inline: auto;
+
+    @include respond(tab-land){
+        padding-inline: 1.5rem;
+    }
+    @include respond(phone){
+        padding-inline: 0.8rem;
+    }
+}
+.btn{
+    background: var(--btn-color-blue);
+    padding: 0.6rem 1.2rem;
+    color:white !important;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    &:hover{
+        border-color: #3fe8ab;
+        background: transparent;
+        color:var(--cultured) !important;
+    }
+}
+

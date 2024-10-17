@@ -1,0 +1,57 @@
+@import "../../styles/mixins.scss";
+
+.payment_type{
+    @include backgroundImage("../../assets/payment-type-back.png", 405px); // Custom height for .welcome
+
+    
+    
+    &_container{
+        display: flex;
+        justify-content: space-between;
+        align-items: end; 
+
+        @include respond(tab-port){
+            flex-direction: column;
+        }
+        
+    }
+    &_left{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: left ;
+        justify-content: center;
+        margin-block: 110px;
+        gap:30px;
+        font-weight: 600;
+        @include respond(tab-port){
+            align-items: center;
+            text-align: center;
+        }
+
+        p{
+            color:#3AFC87;
+            font-size: 18px;
+            
+            
+        }
+        h2{
+            line-height: 1;
+            color: white;
+            font-size: 64px;
+            max-width: 400px;
+            
+        }
+    }
+    &_right{
+        display: flex;
+        align-items: flex-end;
+        height: 100%; 
+        
+        img {
+            margin-bottom: 0; 
+        }
+    }
+    
+    
+}

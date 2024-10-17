@@ -1,0 +1,63 @@
+@import "../../styles/mixins.scss";
+
+.application{
+    @include backgroundImage("../../assets/payment-type-back.png", 725px); 
+    height: 725px; 
+    display: flex;
+    padding-top: 100px;
+    align-items: center; 
+    justify-content: space-between;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+
+    &_left{
+        position: absolute;
+        left: 10%;
+        top:40%;
+        animation: bouncingLeft 4s linear infinite;
+    }
+    @keyframes bouncingLeft {
+        0% {
+          transform: translateY(20%);
+        }
+        50% {
+          transform: translateY(-20%);
+        }
+        100% {
+            transform: translateY(20%);
+          }
+    }
+    &_right{
+        position: absolute;
+        right: 10%;
+        top:60%;
+        animation: bouncingRight 5s linear infinite ;
+    }
+    @keyframes bouncingRight {
+        0% {
+          transform: translateY(15%);
+        }
+        50% {
+          transform: translateY(-10%);
+        }
+        100% {
+            transform: translateY(15%);
+          }
+    }
+    h2{
+        font-size: 64px;
+        font-weight: 600;
+        color:white;
+    }
+    h4{
+        font-size: 18px;
+        color: #3AFC87;
+        font-weight: 500;
+
+    }
+    p{
+        color:white;
+        margin-bottom: 100px;
+    }
+}
