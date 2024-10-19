@@ -5,7 +5,7 @@ import Nomad from "../../assets/images/application/nomad_right.png";
 
 const Application = () => {
   return (
-    <section className="application">
+    <section className="application section_wrapper">
         <img className="application_left" src={Magnum} alt="" />
         <img className="application_right" src={Nomad} alt="" />
         <h4>ПРЕДСТАВЛЯЕМ</h4>

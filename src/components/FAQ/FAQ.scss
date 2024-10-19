@@ -1,0 +1,66 @@
+@import "../../styles/mixins.scss";
+
+.FAQ{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:60px;
+    margin-block: 60px;
+
+    &_title{
+        text-align: center;
+
+        h3{
+            font-size: 18px;
+            font-weight: 600;
+            color: #1ED768;
+        }
+        h1{
+            font-size: 64px;
+            font-weight: 600;
+            letter-spacing: -2px;
+        }
+    }
+    .questions{
+        display: flex;
+        gap:10px;
+        flex-direction: column;
+        width: 80%;
+        
+        .question{
+            
+            border: 1px solid #E7E9EA;
+            padding: 20px;
+            padding-left: 30px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            h3{
+                font-size: 24px;
+                font-weight: 500;
+            }
+            p{
+                font-size: 20px;
+            }
+
+            &_text{
+                display: flex;
+                justify-content: space-between;
+                
+                span {
+                    display: inline-block; // Ensure they stack inline
+                    font-size: 24px; // Size for icons
+                    transition: opacity 0.3s ease; // Add transition for smoothness
+                    position: relative; // Add position to maintain alignment
+                    *{
+                        position: absolute;
+                        right: 0;
+                    }
+                  }
+            }
+        }
+
+    }
+
+}

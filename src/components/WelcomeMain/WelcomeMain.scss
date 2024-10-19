@@ -1,57 +1,45 @@
 @import "../../styles/mixins.scss";
 
-.welcome {
-    @include backgroundImage("../../assets/back-photo.svg", 900px); // Custom height for .welcome
 
+.welcome {
+    @include backgroundImage("../../assets/back-photo.svg", 700px); // Custom height for .welcome
+    height: 700px;
     display: flex;
-    align-items: center; /* выравнивание содержимого по центру */
+    align-items: center; 
     justify-content: center;
     overflow: hidden;
     position: relative;
 
+
     &_left_img{
         position: absolute;
-        left: 0;
-        // animation: handMove 2s linear forwards;
+        left: -40%;
+        // transform: rotateX(-45deg);
+        z-index: 10;
+        
     }
-    @keyframes handMove {
-        0% {
-          transform: translateX(-20%) translateY(20%) rotate(-10deg);
-        }
-        100% {
-            transform: translateX(0) translateY(0) rotate(0);
-          }
-      }
-
+    
     
     &_right_img{
         position: absolute;
         right: 0;
-        // animation: terminalMove 2s linear forwards;
+        
     }
-    @keyframes terminalMove {
-        0% {
-            transform: translateX(20%) translateY(-20%) rotate(-10deg);
-        }
-        50%{
-            transform: translateX(10%) translateY(-10%) rotate(-5deg);
-        }
-        100% {
-            transform: translateX(0) translateY(0) rotate(0);
-            }
-    }
+   
     &_center_text{
-        letter-spacing: -3px;
-        font-family: "Golos Text", sans-serif;
-        font-weight: 500;
-        font-size: 36px;
-        color: #FFFFFF;
-        font-size: 56px;
-        width: 60%;
-        max-width: 750px;
-        text-align: center;
-        align-items: center;
-        z-index: 2;
+
+        h2{
+            letter-spacing: -3px;
+            font-family: "Golos Text", sans-serif;
+            font-weight: 500;
+            color: #FFFFFF;
+            font-size: 96px;
+            max-width: 1050px;
+            text-align: center;
+            align-items: center;
+            line-height: 1;
+        }
+        
         
         span{
             color: #3AFC87;
@@ -59,15 +47,6 @@
                
         }
     }
-    // .changing-text {
-    //     color: #3AFC87;
-    //     text-shadow: 0px 0px 20px #3AFC87;
-              
-    //     display: inline-block;
-    //     width: 400px; 
-    //     text-align: left;
-    //     overflow: hidden;
-    //     white-space: nowrap;
-    //   }
+   
     
 }

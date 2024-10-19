@@ -1,0 +1,129 @@
+@import "../../styles/mixins.scss";
+
+.feadback_section{
+    background: #F5F5F7;
+}
+.feadback{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-block: 60px;
+    align-items: center;
+
+    @include respond(tab-port){
+        flex-direction: column;
+    }
+
+    &_info{
+        
+        h3{
+            color: #1ED768;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        h1{
+            font-size: 64px;
+            font-weight: 600;
+        }
+
+        .details{
+            display: flex;
+            flex-direction: column;
+            gap:30px;
+            margin-block: 60px;
+
+            >div{
+                display: inline-flex;
+                gap:20px;
+
+                span{
+                    width: 44px;
+                    height: 44px;
+                    background: #ffffff;
+                    border-radius: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 24px;
+                    color: #007AFF;
+                }
+                
+                h4{
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+                p{
+                    font-size: 18px;
+                    font-weight: 400;
+                    color:#889097;
+                }
+
+            }
+        }
+    }
+    form{
+        width: 460px;
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 30px;
+        .inputs{
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            gap:10px;
+        }
+        input{
+            width: 100%;
+            padding: 20px;
+            background: #F5F5F7;
+            border: 0;
+            border-radius: 10px;
+            
+        }
+        input::placeholder{
+            font-family: 'Golos' , sans-serif;
+            color:#889097;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        input:focus{
+            border: 0;
+            outline: none;
+        }
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }        
+          
+          
+          .optional {
+            position: absolute;
+            right: 20px;
+            font-size: 16px;
+            margin-left: auto;
+            color:#889097;
+          }
+
+
+        img{
+            width: 120px;
+        }
+        button{
+            width: 100%;
+            padding: 20px;
+            background: #007AFF;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 500;
+            border: 0;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+    }
+}

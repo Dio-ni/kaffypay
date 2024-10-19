@@ -1,83 +1,171 @@
-@import "../../styles/mixins.scss"; 
+@import "../../styles/mixins.scss";
 
 .onboarding {
-    &__container {
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-block: 100px;
+    max-width: 80%; // Ограничиваем ширину контейнера
+    margin-inline: auto; // Центрируем контейнер
+
+    h2 {
+      font-size: 48px; // Заголовок
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .steps-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      max-width: 1000px; 
+      margin: 0 auto; 
+      margin-top: 60px;// Центрируем контейнер и добавляем отступ сверху
+      flex-direction: column;
+      gap: 60px;
+
+      
+      .steps-track {
+        display: flex;
+        transition: transform 0.5s ease; // Плавный переход при смене слайдов
+        gap: 50px;
+        padding-left: 130%; // Сдвигаем контейнер шагов
+      }
+
+      .step-details {
+        width: 50%;
+        p {
+          height: 50px;
+          margin: 0; // Убираем отступы для p
+        }
+      }
+      .step-num {
+        position: relative;
+        margin-bottom: 40px;
+        
+      }
+      .step.num-active{
+        background: #007AFF;
+        color: #fff;
+      }
+      
+      .line {
+          position: absolute; 
+          top: 50%; 
+          left: 0; 
+          width: 100%;
+          height: 2px;
+          background-color: #E7E9EA;
+          z-index: 1; 
+      }
+
+      .step-num ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        z-index: 2;
+        
+
+        li{
+          width: 56px;
+          height: 56px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 20px;
+          border: 1px solid #E7E9EA;
+          color: #889097;
+          position: relative; 
+          background-color: white;
+          z-index: 2; 
+
+        }
+      }
+      
+
+      .step {
+        width: 380px; 
+        max-width: 520px; 
+        flex-shrink: 0; 
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        margin-block: 100px;
+        position: relative; 
+        
+        // Для позиционирования оверлея
 
-        h2 {
-            font-size: 64px;
-            margin-bottom: 30px;
-            font-weight: 600;
+        p {
+          font-size: 20px; // Размер текста
+          font-weight: 500;
+          margin-top: 10px;
         }
 
-        .steps-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 60px;
-            justify-content: center;
-            justify-content: space-around;
-            
-            .step {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 30px;
-                width: 30%; // Two steps per row with gap
+        img {
+          width: 100%;
+          border-radius: 20px;
+          border: 1px solid #E7E9EA;
+          padding: 40px;
+          padding-bottom: 0;
+          opacity: 0.5;
+          }
 
-                p {
-                    font-size: 24px;
-                    font-weight: 500;
-                    letter-spacing: -0.5px;
-                }
+       
+        
+      }
 
-                img {
-                    border-radius: 30px;
-                    padding: 30px;
-                    padding-bottom: 0;
-                    background-color: var(--back-grey);
-                }
-            }
-            
-            .step:nth-child(4) img {
-                padding: 0;
-            }
-            .double-size {
-                width: calc(60% + 60px);
-                img {
-                    padding: 0;
-                    width: 100%;
-                    background-color: #1ED768; // Custom color for the last step
-                }
-            }
-        }
+      .active {
+        transform: scale(1.1); // Текущий шаг увеличивается
+        transition: transform 0.5s ease; // Плавный переход при активации
 
-        @include respond(tab-land) {
-            .steps-container .step {
-                gap: 50px;
-            }
+        img{
+          background-color: var(--back-grey); 
+          opacity: 1;
         }
-        @include respond(tab-land) {
-            .steps-container {
-                justify-content: space-around;
-                align-items: center;
-                .step {
-                    width: 80%;
-                }
-            }
-        }
-        @include respond(tab-port) {
-            .steps-container {
-                // flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                .step {
-                    width: 80%;
-                }
-            }
-        }
+      }
     }
+
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px; // Разделение кнопок
+      justify-content: center;
+      .next{
+        background-color: #007bff;
+        color: white;
+      }
+      .next:hover{
+        background-color: #0056b3; // Темнее при наведении
+      }
+      .prev{
+        background-color: var(--back-grey);
+        color:  #1D1D1F;
+
+      }
+      .prev:hover{
+        opacity: 0.8; // Темнее при наведении
+      }
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:disabled {
+          background-color: #cccccc; // Gray background for disabled state
+          cursor: not-allowed; // Change cursor to indicate it's not clickable
+          opacity: 0.6; // Lower opacity for disabled state
+        } 
+      }
+    }
+  }
 }

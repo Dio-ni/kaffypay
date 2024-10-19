@@ -28,7 +28,7 @@ const PaymentEvolution = () => {
   ));
 
   return (
-    <div className="payment_evolution wrapper">
+    <div className="payment_evolution wrapper ">
       <h2>Эволюция платежей</h2>
       <SlickC types={types} responsive={responsive} />
       <div className="payment_evolution_info">

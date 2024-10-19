@@ -1,75 +1,132 @@
 @import "../../styles/mixins.scss";
 
-.terminal_type{
+.terminal_type {
+    position: relative;
     padding-block: 100px;
-    background-color: #F5F5F7;
-
-    &_container{
-
+  
+    &_container {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      align-items: center;
+  
+      h2 {
+        font-size: 64px;
+        font-weight: 600;
+      }
+  
+      @include respond(tab-port) {
+        text-align: center;
+      }
+  
+      .terminals {
         display: flex;
-        flex-direction: column;
-        gap:60px;
-        align-items: center;
-
-        h2{
-            font-size: 64px;
+        gap: 60px;
+        width: 100%;
+  
+        @include respond(tab-port) {
+          flex-direction: column;
+          width: 80%;
         }
-        @include respond(tab-port){
-            text-align: center;
-        }
-
-        .terminals{
-            position: relative;
-            display: flex;
-            gap:60px;
+  
+        &_card {
+          display: inline-flex;
+          flex-direction: column;
+          background: #f5f5f7;
+          height: 598px;
+          overflow: hidden;
+          width: 50%;
+          border-radius: 30px;
+          position: relative;
+          gap: 30px;
+          padding: 40px;
+  
+          @include respond(tab-port) {
             width: 100%;
+          }
+          .card_text{
+            display: flex;
+            height: auto;
+            position: relative;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+          }
+          h2 {
+            font-size: 36px;
+            font-weight: 500;
+            z-index: 5;
+          }
+  
+          p {
+            font-size: 18px;
+            font-weight: 400;            
+            transition: opacity 0.3s ease, height 0.3s ease;
+          }
+          p.hidden{
+            opacity: 0;
+          }
+          p.visible {
+            opacity: 1;
+            height: auto;
+          }
+  
+          img {
+            width: auto;
+            height: auto;
+            position: relative;
+            bottom: 0;
+            will-change: transform;
+          }
+  
+          .circle_plus {
+            width: 40px;
+            height: 40px;
 
-            @include respond(tab-port){
-                flex-direction: column;
-                width: 80%;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+  
+            img{
+                width: 22px;
             }
-           
-            
-            &_card {
-                display: inline-flex;
-                flex-direction: column;
-                align-items: center; 
-                text-align: center;
-                justify-content: end; 
-                background: #FFFFFF;
-                height: 598px;
-                overflow: hidden;
-                width: 50%; 
-                border-radius: 30px;
-                position: relative;
-                gap:60px;
-                padding: 40px;
-
-                @include respond(tab-port){
-                    width: 100%;
-                }
-                
-                h3{
-                    font-size: 36px;
-                    font-weight: 500;
-                }
-                p{
-                    font-size: 18px;
-                    font-weight: 400;
-                }
-                img {
-                    width: auto; 
-                    height: auto;
-                    max-width: 100%; 
-                    
-                }
-                
-            }
-            &_card:nth-child(1) *{
-                // position: relative;
-                top:-20%;
-        
-            }
+          }
+  
+          .back_circle {
+            position: absolute;
+            width: 1500px;
+            aspect-ratio: 1 / 1;
+            top: 158%;
+            transform: translate(-50%, -50%);
+            border-radius: 100%;
+            background: #e7e9ea;
+          }
         }
+  
+        &_card:nth-child(1) .back_circle {
+          left: 105%;
+        }
+
+  
+        &_card:nth-child(2) .back_circle {
+          left: -5%;
+        }
+  
+        &_card * {
+          z-index: 5;
+        }
+  
+        @include respond(tab-port) {
+          &_card:nth-child(2) .back_circle {
+            left: 110%;
+            top: -50%;
+          }
+        }
+      }
     }
-}
+  }
+  

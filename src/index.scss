@@ -19,6 +19,7 @@
     // outline: none;
     text-decoration: none;
     list-style: none;
+    font-family: "Golos Text", serif;
 }
 
 html{
@@ -66,3 +67,17 @@ img{
     }
 }
 
+.section_wrapper{
+    max-width: 1280px;
+    padding-inline: 5rem;
+    margin-inline: auto;
+    margin-top: 30px;
+    border-radius: 30px;
+
+    @include respond(tab-land){
+        padding-inline: 1.5rem;
+    }
+    @include respond(phone){
+        padding-inline: 0.8rem;
+    }
+}
