@@ -19,7 +19,7 @@ const Feadback = () => {
                     <span><FaLocationDot /></span>
                     <div className="addres_text">
                         <h4>Наш адрес</h4>
-                        <p>Astana Hub, ул. Мангилик Ел 55/7, <br />
+                        <p>Astana Hub, <br /> ул.  Мангилик Ел 55/7, 
                         Блок C3.5, офис 306</p>
                     </div>
                 </div>
@@ -27,7 +27,7 @@ const Feadback = () => {
                     <span><PiChatCircleTextFill /> </span>
                     <div className="addres_text">
                         <h4>Контакты</h4>
-                        <p>+7 701 220 5033 <br />
+                        <p>+7 701 220 50 33 <br />
                         info@alaqan.kz</p>
                     </div>
                 </div>

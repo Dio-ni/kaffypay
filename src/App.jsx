@@ -8,6 +8,7 @@ import TerminalType from "./components/TerminalType/TerminalType";
 import Footer from "./components/Footer/Footer";
 import FAQ from "./components/FAQ/FAQ";
 import Feadback from "./components/Feadback/Feadback";
+import IdentificationType from "./components/IdentificationType/IdentificationType";
 
 const App = () => {
  
@@ -22,8 +23,10 @@ const App = () => {
     <Onboarding />
     <PaymentType />
     <TerminalType />
+    <IdentificationType />
     <FAQ />
     <Feadback />
+    
     <Footer />
     </>
   )

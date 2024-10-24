@@ -20,11 +20,11 @@
             color: #1ED768;
             font-size: 18px;
             font-weight: 600;
-            margin-bottom: 30px;
         }
-        h1{
+        h1{ 
             font-size: 64px;
             font-weight: 600;
+            letter-spacing: -2px;
         }
 
         .details{
@@ -35,7 +35,7 @@
 
             >div{
                 display: inline-flex;
-                gap:20px;
+                gap:10px;
 
                 span{
                     width: 44px;

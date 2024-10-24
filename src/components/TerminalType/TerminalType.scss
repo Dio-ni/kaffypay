@@ -13,6 +13,7 @@
       h2 {
         font-size: 64px;
         font-weight: 600;
+        letter-spacing: -2px;
       }
   
       @include respond(tab-port) {
@@ -21,7 +22,7 @@
   
       .terminals {
         display: flex;
-        gap: 60px;
+        gap: 20px;
         width: 100%;
   
         @include respond(tab-port) {
@@ -33,13 +34,14 @@
           display: inline-flex;
           flex-direction: column;
           background: #f5f5f7;
-          height: 598px;
+          aspect-ratio: 1 / 1;
           overflow: hidden;
-          width: 50%;
+          width: calc((100% - 20px) / 2);
           border-radius: 30px;
           position: relative;
           gap: 30px;
           padding: 40px;
+          cursor: pointer;
   
           @include respond(tab-port) {
             width: 100%;

@@ -29,16 +29,22 @@
         width: 80%;
         
         .question{
-            
             border: 1px solid #E7E9EA;
             padding: 20px;
             padding-left: 30px;
             border-radius: 20px;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+
             h3{
                 font-size: 24px;
                 font-weight: 500;
+                display: flex; /* Make sure h3 is also a flex container */
+                justify-content: space-between; /* Space between question text and icons */
+                align-items: center;
             }
             p{
                 font-size: 20px;
@@ -47,20 +53,76 @@
             &_text{
                 display: flex;
                 justify-content: space-between;
-                
-                span {
-                    display: inline-block; // Ensure they stack inline
-                    font-size: 24px; // Size for icons
-                    transition: opacity 0.3s ease; // Add transition for smoothness
-                    position: relative; // Add position to maintain alignment
-                    *{
-                        position: absolute;
-                        right: 0;
-                    }
-                  }
+                align-items: center;
             }
+            span {
+                display: inline-block; // Ensure they stack inline
+                font-size: 24px; // Size for icons
+                transition: opacity 0.3s ease; // Add transition for smoothness
+                position: absolute; 
+                right: 20px;
+                & > *{
+                    position: absolute;
+                    right: 0;
+                    top: -1px;
+                    
+                }
+              }
         }
 
     }
+    .faq-body {
 
+        display: flex;
+        gap:20px;
+        flex-direction: column;
+        width: 80%;
+    }
+    .faq-row-wrapper{
+        display: flex;
+        justify-content: center;
+    }
+    .icon-wrapper{
+        display: flex;
+        align-items: center;  /* Vertically center the icon */
+        justify-content: center;
+    }
+    .icon-wrapper svg{
+        position: relative;
+        
+        fill:black !important;
+    }
+    .faq-row {
+        border: 1px solid #E7E9EA;
+        padding: 20px !important;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+            .row-title {
+                                
+                display: flex; /* Make sure h3 is also a flex container */
+                justify-content: space-between; /* Space between question text and icons */
+                align-items: center;
+                padding: 0 !important;
+                &-text{
+                    font-weight: 500;
+                    font-size: 20px;
+                }
+                .icon-wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  }
+            }
+
+            
+
+    }
+    .styles_faq-row-wrapper__3vA1D .styles_row-body__1NvUo .styles_faq-row__2YF3c .styles_row-title__1YiiY .styles_icon-wrapper__2cftw{
+        top:27px !important;
+        right:20px !important;
+    }
 }

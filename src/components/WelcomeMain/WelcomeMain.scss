@@ -2,19 +2,34 @@
 
 
 .welcome {
-    @include backgroundImage("../../assets/back-photo.svg", 700px); // Custom height for .welcome
+    @include backgroundImage("../../assets/welcome-back.png", 700px,100%); // Custom height for .welcome
     height: 700px;
     display: flex;
     align-items: center; 
     justify-content: center;
     overflow: hidden;
     position: relative;
-
-
+    .hand-line{
+        position: absolute;
+        left: -10%;
+        top:10%;
+        z-index: 10;
+    }
+    .fade-text {
+        transition: opacity 0.5s ease-in-out; /* Smooth transition */
+      }
+      
+      .fade-in {
+        opacity: 1;
+      }
+      
+      .fade-out {
+        opacity: 0;
+      }
+      
     &_left_img{
         position: absolute;
         left: -40%;
-        // transform: rotateX(-45deg);
         z-index: 10;
         
     }
@@ -40,11 +55,9 @@
             line-height: 1;
         }
         
-        
         span{
             color: #3AFC87;
-            text-shadow: 0px 0px 20px #3AFC87;
-               
+            text-shadow: 0px 0px 10px #3AFC87;
         }
     }
    

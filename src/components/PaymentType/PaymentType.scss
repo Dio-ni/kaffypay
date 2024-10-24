@@ -1,7 +1,7 @@
 @import "../../styles/mixins.scss";
 
 .payment_type{
-    @include backgroundImage("../../assets/payment-type-back.png", 405px); // Custom height for .welcome
+    @include backgroundImage("../../assets/payment-type-back.png", 405px,100%); // Custom height for .welcome
     overflow: hidden;
     height: 405px;
     position: relative;
@@ -25,7 +25,7 @@
         align-items: left ;
         justify-content: center;
         margin-block: 110px;
-        gap:30px;
+        gap:20px;
         font-weight: 600;
         @include respond(tab-port){
             align-items: center;
@@ -43,6 +43,8 @@
             color: white;
             font-size: 64px;
             max-width: 400px;
+            font-weight: 600;
+            letter-spacing: -2px;
             
         }
     }
@@ -50,7 +52,7 @@
         display: flex;
         align-items: flex-end;
         height: 100%; 
-        position: absolute;
+        // position: absolute;
         width:80%;
 
         
@@ -93,7 +95,7 @@
         .notification{
             position: absolute;
             top: 10%;
-            right:    10%;
+            right:3%;
             z-index: 11;
         }
         

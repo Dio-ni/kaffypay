@@ -39,6 +39,10 @@ const Onboarding = () => {
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
 
+  const handleStepClick = (index) => {
+    setCurrentSlide(index); // Update the current slide based on the clicked index
+  };
+
   return (
     <section className="onboarding wrapper">
       <div className="onboarding__container">
@@ -48,35 +52,37 @@ const Onboarding = () => {
           <div
             className="steps-track"
             style={{
-              transform: `translateX(${-currentSlide * 430}px)`,
+              transform: `translateX(${-currentSlide * 440}px)`, // Adjust the slide movement
+              transition: "transform 0.3s ease", // Smooth transition
             }}
           >
             {slides.map((slide, index) => (
               <div
                 key={index}
                 className={`step ${index === currentSlide ? "active" : ""}`}
+                onClick={() => handleStepClick(index)}
               >
-                <div className="image-container">
-                  <img src={slide.img} alt={`Шаг ${index + 1}`} />
-                  <div className="overlay" /> {/* Overlay for the image */}
-                </div>
-                {/* <p>
-                  {index + 1}. {slide.title}
-                </p> */}
+                <img src={slide.img} alt={`Шаг ${index + 1}`} />
+                <div className="overlay" /> {/* Overlay for the image */}
               </div>
             ))}
           </div>
-          
+
           <div className="step-details">
             <div className="step-num">
-            <div className="line"></div>
-            <ul>
-                <li className={`step ${0 === currentSlide ? "num-active" : ""}`}>1</li>
-                <li className={`step ${1 === currentSlide ? "num-active" : ""}`}>2</li>
-                <li className={`step ${2 === currentSlide ? "num-active" : ""}`}>3</li>
-                <li className={`step ${3 === currentSlide ? "num-active" : ""}`}>4</li>
-                <li className={`step ${4 === currentSlide ? "num-active" : ""}`}>5</li>
-            </ul>
+              <div className="line"></div>
+              <ul>
+                {slides.map((_, index) => (
+                  <li
+                    key={index}
+                    className={`step ${index === currentSlide ? "num-active" : ""}`}
+                    onClick={() => handleStepClick(index)} // Add click handler to each step
+                    style={{ cursor: "pointer" }} // Change cursor to pointer for clickability
+                  >
+                    {index + 1} {/* Display the step number */}
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <h1>{slides[currentSlide].title}</h1>
@@ -85,20 +91,20 @@ const Onboarding = () => {
         </div>
 
         <div className="controls">
-        <button 
-          className="prev" 
-          onClick={handlePrev} 
-          disabled={currentSlide === 0} // Disable on the first slide
-        >
-          Назад
-        </button>
-        <button 
-          className="next" 
-          onClick={handleNext} 
-          disabled={currentSlide === slides.length - 1} // Disable on the last slide
-        >
-          Вперед
-        </button>
+          <button
+            className="prev"
+            onClick={handlePrev}
+            disabled={currentSlide === 0} // Disable on the first slide
+          >
+            Назад
+          </button>
+          <button
+            className="next"
+            onClick={handleNext}
+            disabled={currentSlide === slides.length - 1} // Disable on the last slide
+          >
+            Далее
+          </button>
         </div>
       </div>
     </section>

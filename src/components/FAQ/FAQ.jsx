@@ -1,14 +1,44 @@
-import React, { useState } from 'react';
+import React from "react";
+import Faq from "react-faq-component";
 import { FaPlus, FaMinus } from "react-icons/fa6";
-import "./FAQ.scss";
+import "./FAQ.scss"; // Make sure you have your custom styles
+
+const data = {
+  title: "", // We can omit the title if we handle it separately in the layout
+  rows: [
+    {
+      title: "Что такое Alaqan?",
+      content: `Alaqan — это точная и безопасная биометрия идентификации по рисунку вен ладони.`,
+    },
+    {
+      title: "Что будет с моей биометрией?",
+      content: `Alaqan не хранит биометрию ладони, при регистрации она надежно зашифровывается в цифровой код и хранится на защищенных серверах в Казахстане.`,
+    },
+    {
+      title: "Что если отрубить руку?",
+      content: `Если попытаться отсканировать отрубленную руку, система не сможет распознать биометрические данные, так как для работы требуется активный и живой кровоток.`,
+    },
+  ],
+};
+
+const styles = {
+  titleTextColor: "black",
+  rowTitleColor: "black",
+  rowContentColor: "grey",
+  arrowColor: "blue",
+  rowContentPaddingTop:"20px",
+};
+
+const config = {
+  animate: true,
+  arrowIcon: "V", // Customize the arrow icon
+  tabFocus: true,
+  expandIcon: <FaPlus/>, // Icon when the FAQ is collapsed
+  collapseIcon:<FaMinus/> , // Icon when the FAQ is expanded
+  customRowClassName: "question", 
+};
 
 const FAQ = () => {
-  const [expandedIndex, setExpandedIndex] = useState(null); // State to track which question is expanded
-
-  const toggleQuestion = (index) => {
-    setExpandedIndex(expandedIndex === index ? null : index); // Toggle the question
-  };
-
   return (
     <section className="FAQ wrapper">
       <div className="FAQ_title">
@@ -16,47 +46,15 @@ const FAQ = () => {
         <h1>Вопросы и ответы</h1>
       </div>
       <div className="questions">
-        {[ // Array of question and answer objects
-          {
-            question: "Что такое Alaqan?",
-            answer: "Alaqan — это точная и безопасная биометрия идентификации по рисунку вен ладони."
-          },
-          {
-            question: "Что будет с моей биометрией?",
-            answer: "Alaqan не хранит биометрию ладони, при регистрации она надежно зашифровывается в цифровой код и хранится на защищенных серверах в Казахстане."
-          },
-          {
-            question: "Что если отрубить руку?",
-            answer: "Если попытаться отсканировать отрубленную руку, система не сможет распознать биометрические данные, так как для работы требуется активный и живой кровоток."
-          }
-        ].map((item, index) => (
-          <div className="question" key={index} onClick={() => toggleQuestion(index)}>
-            <div className="question_text" >
-              <h3>{item.question}</h3>
-              <span  >
-                <FaMinus />
-                <FaPlus
-                style={{
-                    transition: "opacity 0.4s ease", 
-                    opacity: expandedIndex === index ? 0 : 1 
-                }} 
-                />
-              </span>
-            </div>
-            <p style={{
-               maxHeight: expandedIndex === index ? '200px' : '0',
-               overflow: 'hidden',
-               transition: 'max-height 0.4s ease, opacity 0.5s ease, padding-top 0.5s ease', // Added padding transition
-               opacity: expandedIndex === index ? 1 : 0,
-               paddingTop: expandedIndex === index ? '15px' : '0',
-            }}>
-              {item.answer}
-            </p>
-          </div>
-        ))}
+        <Faq 
+          data={data}
+          styles={styles}
+          config={config}
+          // className="faq-component" // Custom class for the FAQ container
+        />
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default FAQ;

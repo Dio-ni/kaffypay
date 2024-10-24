@@ -13,9 +13,11 @@
     margin-inline: auto; // Центрируем контейнер
 
     h2 {
-      font-size: 48px; // Заголовок
+      font-size: 64px; // Заголовок
       margin-bottom: 20px;
       font-weight: 600;
+      letter-spacing: -2px;
+      margin: 0;
     }
 
     .steps-container {
@@ -28,14 +30,14 @@
       margin: 0 auto; 
       margin-top: 60px;// Центрируем контейнер и добавляем отступ сверху
       flex-direction: column;
-      gap: 60px;
+      gap: 70px;
 
       
       .steps-track {
         display: flex;
         transition: transform 0.5s ease; // Плавный переход при смене слайдов
         gap: 50px;
-        padding-left: 130%; // Сдвигаем контейнер шагов
+        margin-left: 133%; // Сдвигаем контейнер шагов
       }
 
       .step-details {
@@ -92,15 +94,19 @@
       
 
       .step {
-        width: 380px; 
-        max-width: 520px; 
+        width: 390px; 
+        // height: 390px;
+        justify-content: flex-end;
         flex-shrink: 0; 
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: center;
+        text-align: end;
         position: relative; 
-        
+        border: 1px solid #E7E9EA;
+        // width: 80%;
+        // padding-top: 60px;
+        border-radius: 20px;
         // Для позиционирования оверлея
 
         p {
@@ -108,26 +114,33 @@
           font-weight: 500;
           margin-top: 10px;
         }
-
+        
         img {
-          width: 100%;
-          border-radius: 20px;
-          border: 1px solid #E7E9EA;
-          padding: 40px;
-          padding-bottom: 0;
+          width: 70%;
+          // padding: 60px 40px;
+          // padding-bottom: 0;
           opacity: 0.5;
           }
 
        
         
       }
+      .step:nth-child(4){
+        overflow: hidden;
+        img{
+          padding: 0;
+          height: 100%;
+          width: 100%;
+        }
+      }
 
       .active {
-        transform: scale(1.1); // Текущий шаг увеличивается
+        transform: scale(1.2); // Текущий шаг увеличивается
         transition: transform 0.5s ease; // Плавный переход при активации
+        background-color: var(--back-grey); 
 
         img{
-          background-color: var(--back-grey); 
+          
           opacity: 1;
         }
       }

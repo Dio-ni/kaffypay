@@ -1,5 +1,5 @@
 import "./Application.scss";
-import Iphone_Emulator from "../../assets/Iphone-emulator.png";
+import Iphone_Emulator from "../../assets/images/application/phone.png";
 import Magnum from "../../assets/images/application/magnum_left.png";
 import Nomad from "../../assets/images/application/nomad_right.png";
 

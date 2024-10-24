@@ -3,7 +3,9 @@ import LineFront from "../../assets/images/payment_type/Line_front.png";
 import LineBack from "../../assets/images/payment_type/Line_back.png";
 import PaymentList from "../../assets/images/payment_type/payment_list.png";
 import BankCard from "../../assets/images/payment_type/bank_card.png";
-import BankCard2 from "../../assets/images/payment_type/bank_card_2.png"; // Импорт нового изображения
+import BankCard2 from "../../assets/images/payment_type/bank_card_2.png"; 
+import BankCard3 from "../../assets/images/payment_type/bank_card_3.png"; 
+import BankCard4 from "../../assets/images/payment_type/bank_card_4.png"; // Импорт нового изображения
 import Notification from "../../assets/images/payment_type/notification.png";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { useRef, useState } from "react";
@@ -41,7 +43,7 @@ const PaymentType = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
   };
   const fadeInFromBottomCard2 = {
-    hidden: { opacity: 0, y: 0 },
+    hidden: { opacity: 0, y: 100 },
     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
   };
 
@@ -51,13 +53,12 @@ const PaymentType = () => {
   };
 
   // Анимация движения по оси X
-  const notificationX = useTransform(scrollY, [3600,3900], ["0%", "50%"]);
-
+  const notificationX = useTransform(scrollY, [3500,3700], ["0%", "10%"]);
   
-  const bankCardX = useTransform(scrollY, [3700,3900], ["0%", "50%"]);
-  const bankCard2X = useTransform(scrollY, [3700,3900], ["0%", "30%"]); // Движение для BankCard2
-  const bankCard3X = useTransform(scrollY, [3700,3900], ["0%", "10%"]); // Движение для BankCard2
-  const bankCard4X = useTransform(scrollY, [3700,3900], ["0%", "-10%"]); // Движение для BankCard2
+  const bankCardX = useTransform(scrollY, [3600,3800], ["0%", "50%"]);
+  const bankCard2X = useTransform(scrollY, [3600,3800], ["0%", "30%"]); // Движение для BankCard2
+  const bankCard3X = useTransform(scrollY, [3600,3800], ["0%", "10%"]); // Движение для BankCard2
+  const bankCard4X = useTransform(scrollY, [3600,3800], ["0%", "-10%"]); // Движение для BankCard2
 
 
   return (
@@ -68,17 +69,17 @@ const PaymentType = () => {
           <h2>Подойдет любая карта</h2>
         </div>
         <div className="payment_type_right">
-          <div className="line">
+          {/* <div className="line">
             <img className="line_front" src={LineFront} alt="LineFront" />
             <img className="line_back" src={LineBack} alt="LineBack" />
-          </div>
+          </div> */}
 
           {/* Анимация появления и движения BankCard */}
           <motion.img
             className="bank_card"
-            src={BankCard}
+            src={BankCard4}
             alt="BankCard"
-            initial="hidden"
+            initial=""
             animate={isVisible ? "visible" : "hidden"} // Появление
             variants={fadeInFromBottom}
             style={isScrolled ? { x: bankCardX } : {}} // Движение при прокрутке
@@ -94,37 +95,9 @@ const PaymentType = () => {
             variants={fadeInFromBottom}
           />
 
-          {/* Анимация появления и движения BankCard2 */}
-          {/* <motion.img
-            className="bank_card_2" // Добавьте соответствующий класс для стилей
-            src={BankCard2}
-            alt="BankCard2"
-            initial="hidden"
-            animate={isScrolled ? "visible" : "hidden"} // Появление при скролле
-            variants={fadeInFromBottomCard2}
-            style={isScrolled ? { x: bankCard2X } : {}} // Движение при прокрутке
-          />
-          <motion.img
-            className="bank_card_2" // Добавьте соответствующий класс для стилей
-            src={BankCard2}
-            alt="BankCard2"
-            initial="hidden"
-            animate={isScrolled ? "visible" : "hidden"} // Появление при скролле
-            variants={fadeInFromBottomCard2}
-            style={isScrolled ? { x: bankCard3X } : {}} // Движение при прокрутке
-          />
-          <motion.img
-            className="bank_card_2" // Добавьте соответствующий класс для стилей
-            src={BankCard2}
-            alt="BankCard2"
-            initial="hidden"
-            animate={isScrolled ? "visible" : "hidden"} // Появление при скролле
-            variants={fadeInFromBottomCard2}
-            style={isScrolled ? { x: bankCard4X } : {}} // Движение при прокрутке
-          /> */}
           <motion.img
             className="bank_card"
-            src={BankCard}
+            src={BankCard2}
             alt="BankCard"
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"} // Появление
@@ -133,7 +106,7 @@ const PaymentType = () => {
           />
           <motion.img
             className="bank_card"
-            src={BankCard}
+            src={BankCard3}
             alt="BankCard"
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"} // Появление

@@ -18,13 +18,14 @@ const TerminalType = () => {
       <div className="terminal_type_container wrapper">
         <h2>Терминал для каждого</h2>
         <div className="terminals">
-          <div className="terminals_card">
+          <div className="terminals_card"
+          onClick={() => toggleExpand(0)}>
             <div className="back_circle"></div>
             <div className="card_text">
               <h2>Мобильный</h2>
               <div
                 className="circle_plus"
-                onClick={() => toggleExpand(0)}
+                
                 style={{
                   transform: isExpanded[0] ? "rotate(45deg)" : "rotate(0deg)",
                   transition: "transform 0.3s ease",
@@ -60,13 +61,14 @@ const TerminalType = () => {
             />
           </div>
 
-          <div className="terminals_card">
+          <div className="terminals_card" 
+          onClick={() => toggleExpand(1)}>
             <div className="back_circle"></div>
             <div className="card_text">
               <h2>Стационарный</h2>
               <div
                 className="circle_plus"
-                onClick={() => toggleExpand(1)}
+                
                 style={{
                   transform: isExpanded[1] ? "rotate(45deg)" : "rotate(0deg)",
                   transition: "transform 0.3s ease",
