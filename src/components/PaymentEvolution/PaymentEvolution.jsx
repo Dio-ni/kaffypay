@@ -40,8 +40,8 @@ const PaymentEvolution = () => {
 
   // Swipeable options
   const handlers = useSwipeable({
-    onSwipedLeft: handleNext, // Swipe left
-    onSwipedRight: handlePrev, // Swipe right
+    onSwipedLeft:  handlePrev, // Swipe left
+    onSwipedRight:handleNext, // Swipe right
     preventDefaultTouchmoveEvent: true,
     trackMouse: true, // Optional: Allows mouse events
   });
