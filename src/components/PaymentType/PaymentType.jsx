@@ -12,7 +12,7 @@ import { useRef, useState } from "react";
 
 const PaymentType = () => {
   const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const { scrollY } = useScroll({
@@ -24,18 +24,18 @@ const PaymentType = () => {
     console.log("Current scrollY value:", latest);
 
     // Управление видимостью элементов на основе скролла
-    if (latest > 3300) {
-      setIsVisible(true); // Показать элементы
-    } else {
-      setIsVisible(false); // Скрыть элементы
-    }
+    // if (latest > 3300) {
+    //   setIsVisible(true); // Показать элементы
+    // } else {
+    //   setIsVisible(false); // Скрыть элементы
+    // }
 
-    // Движение элементов при прокрутке
-    if (latest >3500) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
+    // // Движение элементов при прокрутке
+    // if (latest >3500) {
+    //   setIsScrolled(true);
+    // } else {
+    //   setIsScrolled(false);
+    // }
   });
 
   const fadeInFromBottom = {
@@ -52,13 +52,13 @@ const PaymentType = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } },
   };
 
-  // Анимация движения по оси X
-  const notificationX = useTransform(scrollY, [3500,3700], ["0%", "10%"]);
+  // // Анимация движения по оси X
+  // const notificationX = useTransform(scrollY, [3500,3700], ["0%", "10%"]);
   
-  const bankCardX = useTransform(scrollY, [3600,3800], ["0%", "50%"]);
-  const bankCard2X = useTransform(scrollY, [3600,3800], ["0%", "30%"]); // Движение для BankCard2
-  const bankCard3X = useTransform(scrollY, [3600,3800], ["0%", "10%"]); // Движение для BankCard2
-  const bankCard4X = useTransform(scrollY, [3600,3800], ["0%", "-10%"]); // Движение для BankCard2
+  // const bankCardX = useTransform(scrollY, [3600,3800], ["0%", "50%"]);
+  // const bankCard2X = useTransform(scrollY, [3600,3800], ["0%", "30%"]); // Движение для BankCard2
+  // const bankCard3X = useTransform(scrollY, [3600,3800], ["0%", "10%"]); // Движение для BankCard2
+  // const bankCard4X = useTransform(scrollY, [3600,3800], ["0%", "-10%"]); // Движение для BankCard2
 
 
   return (

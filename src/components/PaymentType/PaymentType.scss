@@ -1,106 +1,150 @@
 @import "../../styles/mixins.scss";
 
-.payment_type{
-    @include backgroundImage("../../assets/payment-type-back.png", 405px,100%); // Custom height for .welcome
+.payment_type {
+    @include backgroundImage("../../assets/payment-type-back.png", 405px, 100%);
     overflow: hidden;
     height: 405px;
     position: relative;
-    
-    
-    &_container{
+
+    @include respond(phone) {
+        height: auto;
+        aspect-ratio: 1 / 0.9; // Make it a square aspect ratio on mobile
+    }
+
+    &_container {
         display: flex;
         justify-content: space-between;
-        align-items: end; 
+        align-items: flex-end; // Aligned to bottom initially
 
-        @include respond(tab-port){
+        @include respond(phone) {
             flex-direction: column;
+            align-items: center; // Centered on mobile
         }
-        
     }
-    &_left{
+
+    &_left {
         width: 50%;
         height: 100%;
         display: flex;
         flex-direction: column;
-        align-items: left ;
+        align-items: flex-start;
         justify-content: center;
         margin-block: 110px;
-        gap:20px;
+        gap: 20px;
         font-weight: 600;
-        @include respond(tab-port){
+
+        @include respond(phone) {
+            width: 90%;
             align-items: center;
             text-align: center;
+            margin-block: 30px;
         }
 
-        p{
-            color:#3AFC87;
+        p {
+            color: #3AFC87;
             font-size: 18px;
-            
-            
+
+            @include respond(phone) {
+                font-size: 14px;
+            }
         }
-        h2{
+
+        h2 {
             line-height: 1;
             color: white;
             font-size: 64px;
             max-width: 400px;
             font-weight: 600;
             letter-spacing: -2px;
-            
+
+            @include respond(phone) {
+                font-size: 24px;
+                max-width: 100%;
+                letter-spacing: -1px;
+            }
         }
     }
-    &_right{
+
+    &_right {
         display: flex;
         align-items: flex-end;
-        height: 100%; 
-        // position: absolute;
-        width:80%;
+        height: 100%;
+        width: 80%;
 
-        
-        
-        .line{
-            &_front{
+        @include respond(phone) {
+            width: 75%;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .line {
+            &_front {
                 position: absolute;
-                top:40%;
+                top: 40%;
                 right: 0;
                 z-index: 10;
+
+                @include respond(phone) {
+                    top: 60%;
+                    right: 10%;
+                    width: 60%;
+                }
             }
-            &_back{
-                position:absolute;
-                top:24%;
+            &_back {
+                position: absolute;
+                top: 24%;
                 right: 0;
                 z-index: 0;
 
+                @include respond(phone) {
+                    top: 50%;
+                    right: 8%;
+                    width: 55%;
+                }
             }
         }
-        .bank_card{
+
+        .bank_card {
             position: absolute;
             bottom: 0;
             left: 50%;
             z-index: 5;
+
+            @include respond(phone) {
+                // bottom: 10%;
+                left: 10%;
+                width: 55%;
+            }
         }
-        // .bank_card_2{
-        //     position:absolute;
-        //     bottom: -25%;
-        //     left: 10%;
-            
-        //     z-index: 5;
-        //     width: 300px;
-        // }   
-        .payment_list{
+
+        .payment_list {
             position: absolute;
             left: 60%;
             bottom: 15%;
             z-index: 0;
+
+            @include respond(phone) {
+                position: static;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                bottom: 40%;
+                width: 80%;
+            }
         }
-        .notification{
+
+        .notification {
             position: absolute;
             top: 10%;
-            right:3%;
+            right: 3%;
             z-index: 11;
+
+            @include respond(phone) {
+                top: 35%;
+                right: 5%;
+                width: 40%;
+            }
         }
-        
     }
-    
-    
-    
 }

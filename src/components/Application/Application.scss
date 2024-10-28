@@ -11,12 +11,21 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    @include respond(phone){
+      padding-top:  30px;
+      height: auto;
+      aspect-ratio: 1 / 1; 
+    }
 
     &_left{
         position: absolute;
         left: 5%;
         top:40%;
         animation: bouncingLeft 4s linear infinite;
+        @include respond(phone){
+          width: 50%;
+          top:60%;
+        }
     }
     @keyframes bouncingLeft {
         0% {
@@ -34,6 +43,11 @@
         right: 5%;
         top:60%;
         animation: bouncingRight 5s linear infinite ;
+        @include respond(phone){
+          width: 50%;
+          top:40%;
+          z-index: 10;
+        }
     }
     @keyframes bouncingRight {
         0% {
@@ -46,20 +60,53 @@
             transform: translateY(15%);
           }
     }
-    h2{
+    .phone-emulator{
+      @include respond(phone){
+        width: 180%;
+        position: relative;
+        bottom: 15%;
+      }
+    }
+    &_text{
+      display: flex;
+      align-items: center; 
+      justify-content: space-between;
+      flex-direction: column;
+      width: 80%;
+      text-align: center;
+      
+      
+      h2{
         font-size: 64px;
         font-weight: 600;
         color:white;
         letter-spacing: -2px;
+
+        @include respond(phone){
+          font-size: 24px;
+          letter-spacing: -1px;
+          line-height: 1;
+          margin: 14px 0 20px 0;
+        }
     }
     h4{
         font-size: 18px;
         color: #3AFC87;
         font-weight: 500;
+        @include respond(phone){
+          font-size: 12px;
+          line-height: 1;
+        }
 
     }
     p{
         color:white;
         margin-bottom: 100px;
+        @include respond(phone){
+          font-size: 14px;
+          font-weight: 400;
+        }
     }
+    }
+    
 }

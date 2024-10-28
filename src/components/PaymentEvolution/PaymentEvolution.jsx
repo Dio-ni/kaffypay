@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSwipeable } from "react-swipeable";
 import "./PaymentEvolution.scss";
 import { paymentEvolutions } from "../../Data";
 
-const EvolutionOfPayments = () => {
+const PaymentEvolution = () => {
   const [currentType, setCurrentType] = useState(0);
+  const [stepWidth, setStepWidth] = useState(window.innerWidth <= 768 ? 50 : 20); // 50vw for mobile, 20vw for desktop
+
+  // Update stepWidth on resize to handle responsiveness
+  useEffect(() => {
+    const handleResize = () => {
+      setStepWidth(window.innerWidth <= 768 ? 50 : 20);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleNext = () => {
     if (currentType < paymentEvolutions.length - 1) {
@@ -13,7 +25,7 @@ const EvolutionOfPayments = () => {
 
   const handlePrev = () => {
     if (currentType > 0) {
-      setCurrentType((prev) => prev - 1); 
+      setCurrentType((prev) => prev - 1);
     }
   };
 
@@ -21,19 +33,31 @@ const EvolutionOfPayments = () => {
     setCurrentType(index);
   };
 
+  const totalSteps = paymentEvolutions.length;
+  const gap = 50; // px
+  const totalWidthVW = (totalSteps - 1) * stepWidth + ((totalSteps - 1) * gap) / (window.innerWidth / 100);
+  const paddingRight = totalWidthVW;
 
+  // Swipeable options
+  const handlers = useSwipeable({
+    onSwipedLeft: handleNext, // Swipe left
+    onSwipedRight: handlePrev, // Swipe right
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true, // Optional: Allows mouse events
+  });
 
   return (
     <section className="evolution wrapper">
       <div className="evolution__container">
         <h2>Эволюция платежей</h2>
 
-        <div className="evolution__steps-container">
+        <div className="evolution__steps-container" {...handlers}>
           <div
             className="evolution__steps-track"
             style={{
-              transform: `translateX(${currentType * 400}px)`, // Move track left based on currentType
-              transition: 'transform 0.3s ease', // Smooth transition effect
+              transform: `translateX(calc(${currentType * (stepWidth)}vw + ${currentType * gap}px))`, // Include gap for each step
+              transition: "transform 0.3s ease",
+              paddingRight: `${paddingRight}vw`,
             }}
           >
             {paymentEvolutions.map((type, index) => (
@@ -41,13 +65,12 @@ const EvolutionOfPayments = () => {
                 key={index}
                 className={`evolution__step 
                   ${index === currentType ? "evolution__step--active" : ""}
-                  ${index === 0 ? "step-first" : ""}
                 `}
-                onClick={() => handleStepClick(index)} // Add click handler
+                onClick={() => handleStepClick(index)}
               >
                 <div className="evolution__image-container">
                   <img src={index === currentType ? type.hoverImg : type.img} alt={`Шаг ${index + 1}`} />
-                  <div className="evolution__overlay" /> {/* Overlay for the image */}
+                  <div className="evolution__overlay" />
                 </div>
                 <p>{type.years}</p>
               </div>
@@ -56,11 +79,11 @@ const EvolutionOfPayments = () => {
           <div className="evolution__indicators">
             {paymentEvolutions.map((_, index) => (
               <div
-              key={index}
-              className={`evolution__indicator ${index === currentType ? "evolution__indicator--active" : ""}`}
-              onClick={() => handleStepClick(index)} // Add click handler to indicators
-              style={{ cursor: 'pointer' }} // Add pointer cursor to indicate clickability
-            />
+                key={index}
+                className={`evolution__indicator ${index === currentType ? "evolution__indicator--active" : ""}`}
+                onClick={() => handleStepClick(index)}
+                style={{ cursor: "pointer" }}
+              />
             )).reverse()}
           </div>
           <div className="evolution__step-details">
@@ -72,15 +95,15 @@ const EvolutionOfPayments = () => {
         <div className="controls">
           <button
             className="prev"
-            onClick={handlePrev} // Update click handler for the previous button
-            disabled={currentType === 0} // Disable if it's the first item
+            onClick={handlePrev}
+            disabled={currentType === 0}
           >
             Назад
           </button>
           <button
             className="next"
-            onClick={handleNext} // Update click handler for the next button
-            disabled={currentType === paymentEvolutions.length - 1} // Disable if it's the last item
+            onClick={handleNext}
+            disabled={currentType === paymentEvolutions.length - 1}
           >
             Далее
           </button>
@@ -90,4 +113,4 @@ const EvolutionOfPayments = () => {
   );
 };
 
-export default EvolutionOfPayments;
+export default PaymentEvolution;

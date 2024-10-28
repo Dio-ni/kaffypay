@@ -30,7 +30,7 @@ const WelcomeMain = () => {
 
   const handTransformX = useTransform(scrollYProgress, [0, 1], ["-14%", "25%"]);
   const handTransformY = useTransform(scrollYProgress, [0, 1], ["40%", "-20%"]);
-  const handRotation = useTransform(scrollYProgress, [0, 1], [-25, 20]);
+  const handRotation = useTransform(scrollYProgress, [0, 1], [-15, 20]);
 
   const terminalTransformX = useTransform(scrollYProgress, [0, 1], ["75%", "0%"]);
   const terminalTransformY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
@@ -38,6 +38,15 @@ const WelcomeMain = () => {
 
   return (
     <div className="scroll-container" ref={ref}>
+      <div className="mobile-text">
+      <h2>
+        Оплата ладонью вместо{" "}
+        <span className={`fade-text ${fade ? "fade-in" : "fade-out"}`}>
+          {textOptions[currentIndex]}
+        </span>
+      </h2>
+    </div>
+
       <section className="welcome section_wrapper wrapper">
         <motion.div  
           className="welcome_left_img"
@@ -58,7 +67,8 @@ const WelcomeMain = () => {
         <div className="welcome_center_text">
           <h2>
             Оплата ладонью вместо{" "}
-            <span className={`fade-text ${fade ? "fade-in" : "fade-out"}`}>
+            <span className={`fade-text ${fade ? "fade-in" : "fade-out"}`}
+            >
         {textOptions[currentIndex]}
       </span>
           </h2>

@@ -1,49 +1,72 @@
 @import "../../styles/mixins.scss";
 
 
+.scroll-container{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    flex-direction:column; 
+
+}
 .welcome {
-    @include backgroundImage("../../assets/welcome-back.png", 700px,100%); // Custom height for .welcome
-    height: 700px;
+    @include backgroundImage("../../assets/welcome-back.png", 90vh, 100%); // Custom height for .welcome
+    height:90vh;
     display: flex;
     align-items: center; 
     justify-content: center;
     overflow: hidden;
     position: relative;
-    .hand-line{
+    
+    @include respond(phone){
+        margin-bottom: 30px;
+      }
+      
+    .hand-line {
         position: absolute;
+        width: 30%;
         left: -10%;
-        top:10%;
+        top: 15%;
         z-index: 10;
+        img{
+            width: 100%;
+        }
     }
+
     .fade-text {
         transition: opacity 0.5s ease-in-out; /* Smooth transition */
-      }
+    }
       
-      .fade-in {
+    .fade-in {
         opacity: 1;
-      }
+    }
       
-      .fade-out {
+    .fade-out {
         opacity: 0;
-      }
+    }
       
-    &_left_img{
+    &_left_img {
+        width: 70%;
         position: absolute;
-        left: -40%;
+        left: -40%; 
         z-index: 10;
-        
+
+        img{
+            width: 100%;
+        }
     }
     
-    
-    &_right_img{
+    &_right_img {
         position: absolute;
-        right: 0;
-        
+        right: 0%; // Mirrored positioning for larger screens
+        z-index: 10;
+        width: 40%;
+        img{
+            width: 100%;
+        }
     }
    
-    &_center_text{
-
-        h2{
+    &_center_text {
+        h2 {
             letter-spacing: -3px;
             font-family: "Golos Text", sans-serif;
             font-weight: 500;
@@ -51,15 +74,68 @@
             font-size: 96px;
             max-width: 1050px;
             text-align: center;
-            align-items: center;
             line-height: 1;
         }
         
-        span{
+        span {
             color: #3AFC87;
             text-shadow: 0px 0px 10px #3AFC87;
         }
     }
-   
+
     
+}
+
+.mobile-text {
+    display: none;
+    h2 {
+        letter-spacing: -2px;
+        font-family: "Golos Text", sans-serif;
+        font-weight: 600;
+        // color: #FFFFFF;
+        font-size: 32px;
+        max-width: 300px;
+        text-align: center;
+        line-height: 1;
+    }
+    
+    span {
+        color: #3AFC87;
+        text-shadow: 0px 0px 10px #3AFC87;
+    }
+}
+
+@include respond(tab-port){
+
+    .welcome {
+        height:50vh;
+        .hand-line{
+            width: 100%;
+            left: -40%;
+            height: 50%;
+        }
+
+        &_left_img {
+            width: 100%;
+            left: -85%;
+            img{   
+                transform: scale(1.6);   
+            }
+        }
+        &_right_img {
+            width: 90%;
+            right: 10%;
+            img{
+                transform:  rotate(7deg);
+            }
+        }
+    }
+
+        .mobile-text{
+            margin: 30px 0;
+            display: block;
+        }
+        .welcome_center_text {
+            display: none;
+        }
 }

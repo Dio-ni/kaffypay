@@ -3,17 +3,26 @@
 .terminal_type {
     position: relative;
     padding-block: 100px;
+    @include respond(phone){
+      padding-block: 30px;
+    }
   
     &_container {
       display: flex;
       flex-direction: column;
       gap: 60px;
       align-items: center;
-  
+      @include respond(phone){
+        gap:30px;
+      }
       h2 {
         font-size: 64px;
         font-weight: 600;
         letter-spacing: -2px;
+
+        @include respond(phone){
+          font-size: 24px;
+        }
       }
   
       @include respond(tab-port) {
@@ -24,10 +33,17 @@
         display: flex;
         gap: 20px;
         width: 100%;
+        
   
         @include respond(tab-port) {
           flex-direction: column;
           width: 80%;
+        }
+        @include respond(phone){
+          
+          width: 100%;
+          flex-direction:row;
+          aspect-ratio: 1 / 0.5;
         }
   
         &_card {
@@ -42,9 +58,12 @@
           gap: 30px;
           padding: 40px;
           cursor: pointer;
+
+
   
           @include respond(tab-port) {
             width: 100%;
+            padding: 14px;
           }
           .card_text{
             display: flex;
@@ -59,12 +78,20 @@
             font-size: 36px;
             font-weight: 500;
             z-index: 5;
+            @include respond(phone){
+              font-size: 16px;
+              letter-spacing: -1px;
+            }
           }
   
           p {
             font-size: 18px;
             font-weight: 400;            
             transition: opacity 0.3s ease, height 0.3s ease;
+
+            @include respond(phone){
+              font-size: 14px;
+            }
           }
           p.hidden{
             opacity: 0;
@@ -80,6 +107,11 @@
             position: relative;
             bottom: 0;
             will-change: transform;
+
+            @include respond(phone){
+              // top:0;
+              bottom: 35%;
+            }
           }
   
           .circle_plus {

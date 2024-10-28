@@ -8,6 +8,11 @@
     gap:60px;
     margin-block: 60px;
 
+    @include respond(phone){
+        gap:24px;
+        margin-block: 30px;
+    }
+
     &_title{
         text-align: center;
 
@@ -20,6 +25,10 @@
             font-size: 64px;
             font-weight: 600;
             letter-spacing: -2px;
+
+            @include respond(phone){
+                font-size: 24px;
+            }
         }
     }
     .questions{
@@ -27,6 +36,10 @@
         gap:10px;
         flex-direction: column;
         width: 80%;
+
+        @include respond(phone){
+            width: 100%;
+        }
         
         .question{
             border: 1px solid #E7E9EA;
@@ -77,6 +90,9 @@
         gap:20px;
         flex-direction: column;
         width: 80%;
+        @include respond(phone){
+            width: 100%;
+        }
     }
     .faq-row-wrapper{
         display: flex;

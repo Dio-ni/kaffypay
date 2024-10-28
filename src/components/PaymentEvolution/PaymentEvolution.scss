@@ -10,11 +10,21 @@
 
     &__container{
         margin-block: 100px;
+        @include respond(phone){
+          margin-block: 30px;
+        }
+        
         h2 {
             font-size: 64px; // Заголовок
             margin-bottom: 60px;
             font-weight: 600;
             letter-spacing: -2px;
+
+            @include respond(phone){
+              letter-spacing: 0;
+              font-size: 24px;
+            
+          }
           }
     }
     
@@ -36,7 +46,10 @@
         flex-direction: row-reverse;
         transition: transform 0.5s ease; // Плавный переход при смене слайдов
         gap: 50px;
-        padding-right: 240%;
+        // padding-right: 235%;
+        @include respond(phone){
+          padding-right: 150%;
+        }
     }
     
     .step-first{ 
@@ -57,11 +70,14 @@
         flex-direction: column;
         text-align: center;
         justify-content: center;
-        width: 350px;
+        width: 20vw;
         border: 0.75px solid #E7E9EA;
         opacity: 0.7;
         border-radius: 30px;
         padding: 20px;
+        @include respond(phone){
+          width: 50vw;
+        }
 
         p{
             font-size: 26px;

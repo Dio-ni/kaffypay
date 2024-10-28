@@ -8,10 +8,13 @@ const Application = () => {
     <section className="application section_wrapper">
         <img className="application_left" src={Magnum} alt="" />
         <img className="application_right" src={Nomad} alt="" />
-        <h4>ПРЕДСТАВЛЯЕМ</h4>
-        <h2>Приложение Alaqan</h2>
-        <p>SuperApp для упрощения вашей финансовой жизни</p>
-        <img src={Iphone_Emulator} alt="" />
+        <div className="application_text">
+          <h4>ПРЕДСТАВЛЯЕМ</h4>
+          <h2>Приложение Alaqan</h2>
+          <p>SuperApp для упрощения вашей финансовой жизни</p>
+  
+        </div>
+        <img className="phone-emulator" src={Iphone_Emulator} alt="" />
     </section>
   )
 }
