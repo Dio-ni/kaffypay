@@ -23,9 +23,9 @@ const App = () => {
     <Onboarding />
     <PaymentType />
     <TerminalType />
-    <IdentificationType />
+    {/* <IdentificationType /> */}
     <FAQ />
-    <Feadback />
+    {/* <Feadback /> */}
     
     <Footer />
     </>
