@@ -81,5 +81,6 @@ img{
     }
     @include respond(phone){
         padding-inline: 0.8rem;
+        margin: 30px;
     }
 }

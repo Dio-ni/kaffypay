@@ -12,12 +12,21 @@
     max-width: 80%; // Limit container width
     margin-inline: auto; // Center container
 
+    @include respond(phone){
+      margin-block: 30px;
+    }
+
     h2 {
       font-size: 64px; // Title
       margin-bottom: 20px;
       font-weight: 600;
       letter-spacing: -2px;
       margin: 0;
+
+      @include respond(phone){
+        font-size: 24px;
+        letter-spacing: -1px;
+      }
     }
 
     .steps-container {
@@ -32,6 +41,11 @@
       flex-direction: column;
       gap: 70px;
 
+      @include respond(phone){
+        margin-top: 50px;
+        gap:60px;
+      }
+
       .steps-track {
         display: flex;
         transition: transform 0.5s ease; // Smooth transition for slide change
@@ -45,16 +59,59 @@
       }
 
       .step-details {
-        width: 50%;
-        p {
-          height: 50px;
-          margin: 0; // Remove margins for p
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h1{
+          font-size: 36px;
+          font-weight: 500;
+
+          @include respond(phone){
+            font-size: 18px;
+            margin-bottom: 10px;
+          }
+        }
+        .step-description{
+          font-size: 18px;
+          font-weight: 400;
+
+          @include respond(phone){
+            font-size: 14px;
+          }
         }
       }
-
+      .expand-toggle{
+        margin-top: 10px;
+        display: none;
+        color: #889097;
+        font-size: 14px;
+        font-weight: 400;         /* Устанавливает flex-контейнер */
+        align-items: center;           /* Центрирует содержимое по вертикали */
+        justify-content: center;
+        cursor: pointer;
+  
+        @include respond(phone){
+          display: flex;
+        }
+  
+        span {
+          margin-left: 0.5em;            /* Добавляет отступ слева к иконке */
+          display: flex;
+          align-items: center;
+        }
+      }
       .step-num {
         position: relative;
         margin-bottom: 40px;
+        max-width: 200px;
+        width: 100%;
+
+        @include respond(phone){
+          margin-bottom: 30px;
+        }
+
         
         .line {
           position: absolute; 
@@ -63,7 +120,11 @@
           width: 100%;
           height: 2px;
           background-color: #E7E9EA;
-          z-index: 1; 
+          z-index: 1;
+          
+          @include respond(tab-port){
+            height: 1.5px;
+          }
         }
 
         ul {
@@ -85,6 +146,15 @@
             position: relative; 
             background-color: white;
             z-index: 2;
+            font-weight: 500;
+
+            @include respond(tab-port){
+              width: 22px;
+              height: 22px;
+              font-size: 14px;
+              border-radius: 8px;
+              
+            }
 
             &.num-active {
               background: #007AFF;
@@ -92,6 +162,7 @@
             }
           }
         }
+        
       }
 
       .step {
@@ -140,6 +211,10 @@
       display: flex;
       gap: 10px; // Space between buttons
       justify-content: center;
+
+      @include respond(phone){
+        display: none;
+      }
 
       .next {
         background-color: #007bff;

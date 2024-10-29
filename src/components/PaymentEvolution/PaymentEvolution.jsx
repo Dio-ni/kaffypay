@@ -46,7 +46,7 @@ const PaymentEvolution = () => {
   const gap = 50;
   const totalWidthVW = (totalSteps - 1) * stepWidth + ((totalSteps - 1) * gap) / (window.innerWidth / 100);
   const paddingRight = totalWidthVW;
-
+  
   const handlers = useSwipeable({
     onSwipedLeft: handlePrev,
     onSwipedRight: handleNext,
@@ -65,7 +65,7 @@ const PaymentEvolution = () => {
             style={{
               transform: `translateX(calc(${currentType * stepWidth}vw + ${currentType * gap}px))`,
               transition: "transform 0.3s ease",
-              paddingRight: `${paddingRight}vw`,
+              marginRight: `${paddingRight}vw`,
             }}
           >
             {paymentEvolutions.map((type, index) => (

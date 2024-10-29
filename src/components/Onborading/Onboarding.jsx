@@ -6,6 +6,7 @@ import onboarding3 from "../../assets/onboarding-3.png";
 import onboarding4 from "../../assets/onboarding-4.jpg";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
+import { useSwipeable } from "react-swipeable";
 
 const Onboarding = () => {
   const slides = [
@@ -23,6 +24,11 @@ const Onboarding = () => {
       title: "Продолжите регистрацию",
       img: onboarding3,
       description: "Нажмите Отсканировать QR на главном экране."
+    },
+    {
+      title: "Сканируйте QR",
+      img: onboarding4,
+      description: "Наведите камеру на QR на терминале Alaqan, чтобы связать его с вашим аккаунтом."
     },
     {
       title: "Сканируйте QR",
@@ -48,24 +54,35 @@ const Onboarding = () => {
   };
 
   const toggleExpanded = () => setExpanded(!expanded);
+  const handlers = useSwipeable({
+    onSwipedLeft: handlePrev,
+    onSwipedRight: handleNext,
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
+
+  const gap=30;
+  const paddingLeft = `130vw`;
+
 
   return (
     <section className="onboarding wrapper">
       <div className="onboarding__container">
         <h2>Онбординг в приложении</h2>
 
-        <div className="steps-container">
+        <div className="steps-container" {...handlers}>
           <div
             className="steps-track"
             style={{
-              transform: `translateX(${-currentSlide * stepWidth}vw)`, // Use vw for the translation
-              transition: "transform 0.3s ease", // Smooth transition
+              transform: `translateX(calc(${-currentSlide * stepWidth}vw - ${currentSlide * gap}px))`,
+              transition: "transform 0.3s ease",
+              paddingLeft: paddingLeft,
             }}
           >
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className={`step ${index === currentSlide ? "active" : ""}`}
+                className={`step ${index === currentSlide ? "step--active" : ""}`}
                 onClick={() => handleStepClick(index)}
                 style={{ width: `${stepWidth}vw` }} // Set width of each step
               >
@@ -109,9 +126,9 @@ const Onboarding = () => {
             </div>
             {window.innerWidth <= 768 && ( // Show only on mobile
               <p className="expand-toggle" onClick={toggleExpanded}>
-                {expanded ? "Свернуть" : "Развернуть"}
-                <span>
-                  {expanded ? <IoIosArrowUp /> : <IoIosArrowDown />}
+              {expanded ? "Свернуть" : "Развернуть"}
+              <span>
+                {expanded ? <IoIosArrowUp /> : <IoIosArrowDown />}
                 </span>
               </p>
             )}

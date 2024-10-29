@@ -41,6 +41,7 @@
 
     @include respond(phone){
       gap:30px;
+      margin: 0;
     }
   }
 
@@ -49,9 +50,9 @@
     flex-direction: row-reverse;
     gap: 50px;
     margin-block: 20px;
-    @include respond(phone) {
-      padding-right: 150%;
-    }
+    // @include respond(phone) {
+    //   padding-right: 150%;
+    // }
   }
 
   &__step {
