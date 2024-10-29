@@ -4,6 +4,8 @@ import onboarding1 from "../../assets/onboarding-1.png";
 import onboarding2 from "../../assets/onboarding-2.png";
 import onboarding3 from "../../assets/onboarding-3.png";
 import onboarding4 from "../../assets/onboarding-4.jpg";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 
 const Onboarding = () => {
   const slides = [
@@ -30,6 +32,8 @@ const Onboarding = () => {
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [expanded, setExpanded] = useState(false);
+  const stepWidth = window.innerWidth <= 768 ? 50 : 20; // Step width based on viewport size
 
   const handleNext = () => {
     setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
@@ -43,6 +47,8 @@ const Onboarding = () => {
     setCurrentSlide(index); // Update the current slide based on the clicked index
   };
 
+  const toggleExpanded = () => setExpanded(!expanded);
+
   return (
     <section className="onboarding wrapper">
       <div className="onboarding__container">
@@ -52,7 +58,7 @@ const Onboarding = () => {
           <div
             className="steps-track"
             style={{
-              transform: `translateX(${-currentSlide * 440}px)`, // Adjust the slide movement
+              transform: `translateX(${-currentSlide * stepWidth}vw)`, // Use vw for the translation
               transition: "transform 0.3s ease", // Smooth transition
             }}
           >
@@ -61,6 +67,7 @@ const Onboarding = () => {
                 key={index}
                 className={`step ${index === currentSlide ? "active" : ""}`}
                 onClick={() => handleStepClick(index)}
+                style={{ width: `${stepWidth}vw` }} // Set width of each step
               >
                 <img src={slide.img} alt={`Шаг ${index + 1}`} />
                 <div className="overlay" /> {/* Overlay for the image */}
@@ -86,7 +93,28 @@ const Onboarding = () => {
             </div>
 
             <h1>{slides[currentSlide].title}</h1>
-            <p>{slides[currentSlide].description}</p>
+            <div
+              className="step-description"
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: expanded || window.innerWidth > 768 ? "unset" : 2,
+                WebkitBoxOrient: "vertical",
+                overflow: expanded || window.innerWidth > 768 ? "visible" : "hidden",
+                textOverflow: "ellipsis",
+                transition: "height 0.3s ease",
+                height: expanded || window.innerWidth > 768 ? "auto" : "3em",
+              }}
+            >
+              {slides[currentSlide].description}
+            </div>
+            {window.innerWidth <= 768 && ( // Show only on mobile
+              <p className="expand-toggle" onClick={toggleExpanded}>
+                {expanded ? "Свернуть" : "Развернуть"}
+                <span>
+                  {expanded ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                </span>
+              </p>
+            )}
           </div>
         </div>
 

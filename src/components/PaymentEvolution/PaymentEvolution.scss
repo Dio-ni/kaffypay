@@ -1,171 +1,223 @@
-@import "../../styles/mixins.scss"; // Updated import statement
+@import "../../styles/mixins.scss"; // Обновленный импорт
 
-.evolution{
+.evolution {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+
+  &__container {
+    margin-block: 100px;
+    @include respond(phone) {
+      margin-block: 30px;
+    }
+
+    h2 {
+      font-size: 64px;
+      margin-bottom: 60px;
+      font-weight: 600;
+      letter-spacing: -2px;
+
+      @include respond(phone) {
+        letter-spacing: 0;
+        font-size: 24px;
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  &__steps-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
     width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 60px;
+    flex-direction: column;
+    gap: 40px;
+
+    @include respond(phone){
+      gap:30px;
+    }
+  }
+
+  &__steps-track {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 50px;
+    margin-block: 20px;
+    @include respond(phone) {
+      padding-right: 150%;
+    }
+  }
+
+  &__step {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    width: 20vw;
+    border: 0.75px solid #e7e9ea;
+    border-radius: 30px;
+    padding: 20px;
+    opacity: 0.7;
+    cursor: pointer;
+
+    @include respond(phone) {
+      width: 50vw;
+    }
+
+    p {
+      font-size: 26px;
+      font-weight: 400;
+      @include respond(phone){
+        font-size: 18px;
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+
+    &--active {
+      transform: none; // Убираем увеличение
+      background-color: var(--back-grey);
+      opacity: 1;
+      transform: scale(1.2);
+      
+    }
+  }
+
+  &__image-container {
+    display: flex;
+    justify-content: center;
+  }
+  &__step:first-child {
     overflow: hidden;
-
-    &__container{
-        margin-block: 100px;
-        @include respond(phone){
-          margin-block: 30px;
-        }
-        
-        h2 {
-            font-size: 64px; // Заголовок
-            margin-bottom: 60px;
-            font-weight: 600;
-            letter-spacing: -2px;
-
-            @include respond(phone){
-              letter-spacing: 0;
-              font-size: 24px;
-            
-          }
-          }
+    img{
+      position: relative;
+      top:-25px;
+      transform: scale(1.1);
     }
-    
-    
-    &__steps-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-width: 1000px; 
-        margin: 0 auto; 
-        margin-top: 60px;// Центрируем контейнер и добавляем отступ сверху
-        flex-direction: column;
-        gap: 40px;
-    }
-    &__steps-track{
-        position: relative;
-        display: flex;
-        flex-direction: row-reverse;
-        transition: transform 0.5s ease; // Плавный переход при смене слайдов
-        gap: 50px;
-        // padding-right: 235%;
-        @include respond(phone){
-          padding-right: 150%;
-        }
-    }
-    
-    .step-first{ 
-        justify-content: flex-start;
-        padding-top: 0;
-        position: relative;
-
-
-        img{
-            width: 100%;
-            position: relative;
-            left: -10px;
-            margin-bottom: 20px;
-        }
-    }
-    &__step{
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        justify-content: center;
-        width: 20vw;
-        border: 0.75px solid #E7E9EA;
-        opacity: 0.7;
-        border-radius: 30px;
-        padding: 20px;
-        @include respond(phone){
-          width: 50vw;
-        }
-
-        p{
-            font-size: 26px;
-            font-weight: 400;
-        }
-
-        img{
-            width: 100%;
-        }
-    }
-    &__step--active{
-        transform: scale(1.3); // Текущий шаг увеличивается
-        transition: transform 0.5s ease; 
-        margin: 30px;// Плавный переход при активации
-        background-color: var(--back-grey); 
-        opacity: 1;
-        
-    }
-    &__image-container{
-        display: flex;
-        justify-content: center;
-    }
-    &__step-details{
-        width: 50%;
-        h1{
-            font-size: 36px;
-            font-weight: 500;
-            margin: 0;
-        }
-        p{
-            height: 90px;
-            font-size: 18px;
-            margin-block: 30px;
-        }
-        }
-
-        &__indicators {
-            display: flex;
-            justify-content: center;
-            gap: 14px; // Spacing between the indicators
-            margin-top: 20px; // Space between indicators and step details
-          }
-        
-          &__indicator {
-            width: 32px;
-            height: 8px;
-            background-color: #ccc; // Default grey color for inactive steps
-            border-radius: 100px;
-            transition: background-color 0.3s ease;
-        
-            &--active {
-              background-color: #007bff; // Blue color for the active step
-            }
-          }   
-    .controls {
-        
-        margin-top: 20px;
-        display: flex;
-        gap: 10px; // Разделение кнопок
-        justify-content: center;
-        .next{
-          background-color: #007bff;
-          color: white;
-        }
-        .next:hover{
-          background-color: #0056b3; // Темнее при наведении
-        }
-        .prev{
-          background-color: var(--back-grey);
-          color:  #1D1D1F;
+  }
   
-        }
-        .prev:hover{
-          opacity: 0.8; // Темнее при наведении
-        }
-        button {
-          padding: 10px 20px;
-          border: none;
-          border-radius: 16px;
-          cursor: pointer;
-          transition: background-color 0.3s;
-  
-          &:disabled {
-            background-color: #cccccc; // Gray background for disabled state
-            cursor: not-allowed; // Change cursor to indicate it's not clickable
-            opacity: 0.6; // Lower opacity for disabled state
-          } 
-        }
+
+  &__step-details {
+    width: 50%;
+    @include respond(phone) {
+      width: 90vw;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap:10px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 500;
+      margin: 0;
+      @include respond(phone) {
+        font-size: 18px;
+      }
+    }
+
+
+    
+    
+    .evolution__description.expanded {
+      height: 100px; 
+      white-space: normal;
+      overflow: visible;
+    }
+    .expand-toggle{
+      display: none;
+      color: #889097;
+      font-size: 14px;
+      font-weight: 400;         /* Устанавливает flex-контейнер */
+      align-items: center;           /* Центрирует содержимое по вертикали */
+      justify-content: center;
+      cursor: pointer;
+
+      @include respond(phone){
+        display: flex;
       }
 
+      span {
+        margin-left: 0.5em;            /* Добавляет отступ слева к иконке */
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    
+  }
+
+  &__indicators {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 20px;
+    @include respond(phone){
+      gap:6px;
+      margin-top: 0;
+    }
+  }
+
+  &__indicator {
+    width: 32px;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 100px;
+
+    @include respond(phone){
+      height: 6px;
+      width: 6px;
+    }
+    &--active {
+      background-color: #007bff;
+    }
+  }
+
+  .controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    @include respond(phone) {
+      display: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      font-weight: bold;
+
+      &.next {
+        background-color: #007bff;
+        color: white;
+      }
+
+      &.prev {
+        background-color: var(--back-grey);
+        color: #1d1d1f;
+      }
+
+      &:hover {
+        background-color: #0056b3;
+        color: white;
+      }
+
+      &:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+    }
+  }
 }

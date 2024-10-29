@@ -9,11 +9,11 @@
     align-items: center;
     text-align: center;
     margin-block: 100px;
-    max-width: 80%; // Ограничиваем ширину контейнера
-    margin-inline: auto; // Центрируем контейнер
+    max-width: 80%; // Limit container width
+    margin-inline: auto; // Center container
 
     h2 {
-      font-size: 64px; // Заголовок
+      font-size: 64px; // Title
       margin-bottom: 20px;
       font-weight: 600;
       letter-spacing: -2px;
@@ -28,36 +28,35 @@
       position: relative;
       max-width: 1000px; 
       margin: 0 auto; 
-      margin-top: 60px;// Центрируем контейнер и добавляем отступ сверху
+      margin-top: 60px; // Add top margin for spacing
       flex-direction: column;
       gap: 70px;
 
-      
       .steps-track {
         display: flex;
-        transition: transform 0.5s ease; // Плавный переход при смене слайдов
+        transition: transform 0.5s ease; // Smooth transition for slide change
         gap: 50px;
-        margin-left: 133%; // Сдвигаем контейнер шагов
+        margin-left: 133%; // Shift steps track
+
+        // Adjust for responsiveness
+        @include respond(phone) {
+          gap: 30px; // Adjust gap for mobile
+        }
       }
 
       .step-details {
         width: 50%;
         p {
           height: 50px;
-          margin: 0; // Убираем отступы для p
+          margin: 0; // Remove margins for p
         }
       }
+
       .step-num {
         position: relative;
         margin-bottom: 40px;
         
-      }
-      .step.num-active{
-        background: #007AFF;
-        color: #fff;
-      }
-      
-      .line {
+        .line {
           position: absolute; 
           top: 50%; 
           left: 0; 
@@ -65,37 +64,38 @@
           height: 2px;
           background-color: #E7E9EA;
           z-index: 1; 
-      }
+        }
 
-      .step-num ul {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        
-        z-index: 2;
-        
-
-        li{
-          width: 56px;
-          height: 56px;
-          text-align: center;
+        ul {
           display: flex;
           align-items: center;
-          justify-content: center;
-          border-radius: 20px;
-          border: 1px solid #E7E9EA;
-          color: #889097;
-          position: relative; 
-          background-color: white;
-          z-index: 2; 
+          justify-content: space-between;
+          z-index: 2;
 
+          li {
+            width: 56px;
+            height: 56px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            border: 1px solid #E7E9EA;
+            color: #889097;
+            position: relative; 
+            background-color: white;
+            z-index: 2;
+
+            &.num-active {
+              background: #007AFF;
+              color: #fff;
+            }
+          }
         }
       }
-      
 
       .step {
-        width: 390px; 
-        // height: 390px;
+        width: 20vw; // Use vw for responsiveness
         justify-content: flex-end;
         flex-shrink: 0; 
         display: flex;
@@ -104,44 +104,33 @@
         text-align: end;
         position: relative; 
         border: 1px solid #E7E9EA;
-        // width: 80%;
-        // padding-top: 60px;
         border-radius: 20px;
-        // Для позиционирования оверлея
 
         p {
-          font-size: 20px; // Размер текста
+          font-size: 20px; // Text size
           font-weight: 500;
           margin-top: 10px;
         }
         
         img {
           width: 70%;
-          // padding: 60px 40px;
-          // padding-bottom: 0;
           opacity: 0.5;
+
+          &:nth-child(4) {
+            height: 100%; // Full height for the last step
+            width: 100%;
+            padding: 0;
           }
-
-       
-        
-      }
-      .step:nth-child(4){
-        overflow: hidden;
-        img{
-          padding: 0;
-          height: 100%;
-          width: 100%;
         }
-      }
 
-      .active {
-        transform: scale(1.2); // Текущий шаг увеличивается
-        transition: transform 0.5s ease; // Плавный переход при активации
-        background-color: var(--back-grey); 
+        &--active {
+          transform: scale(1.2); // Scale active step
+          transition: transform 0.5s ease; // Smooth scale transition
+          background-color: var(--back-grey); 
 
-        img{
-          
-          opacity: 1;
+          img {
+            opacity: 1;
+          }
         }
       }
     }
@@ -149,23 +138,27 @@
     .controls {
       margin-top: 20px;
       display: flex;
-      gap: 10px; // Разделение кнопок
+      gap: 10px; // Space between buttons
       justify-content: center;
-      .next{
+
+      .next {
         background-color: #007bff;
         color: white;
-      }
-      .next:hover{
-        background-color: #0056b3; // Темнее при наведении
-      }
-      .prev{
-        background-color: var(--back-grey);
-        color:  #1D1D1F;
 
+        &:hover {
+          background-color: #0056b3; // Darker on hover
+        }
       }
-      .prev:hover{
-        opacity: 0.8; // Темнее при наведении
+
+      .prev {
+        background-color: var(--back-grey);
+        color: #1D1D1F;
+
+        &:hover {
+          opacity: 0.8; // Darker on hover
+        }
       }
+
       button {
         padding: 10px 20px;
         border: none;
@@ -175,7 +168,7 @@
 
         &:disabled {
           background-color: #cccccc; // Gray background for disabled state
-          cursor: not-allowed; // Change cursor to indicate it's not clickable
+          cursor: not-allowed; // Change cursor for disabled state
           opacity: 0.6; // Lower opacity for disabled state
         } 
       }

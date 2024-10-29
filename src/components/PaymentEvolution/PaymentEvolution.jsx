@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSwipeable } from "react-swipeable";
 import "./PaymentEvolution.scss";
 import { paymentEvolutions } from "../../Data";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
+
+
 
 const PaymentEvolution = () => {
   const [currentType, setCurrentType] = useState(0);
-  const [stepWidth, setStepWidth] = useState(window.innerWidth <= 768 ? 50 : 20); // 50vw for mobile, 20vw for desktop
+  const [stepWidth, setStepWidth] = useState(window.innerWidth <= 768 ? 50 : 20);
+  const [expanded, setExpanded] = useState(false); 
 
-  // Update stepWidth on resize to handle responsiveness
   useEffect(() => {
     const handleResize = () => {
       setStepWidth(window.innerWidth <= 768 ? 50 : 20);
@@ -20,30 +24,34 @@ const PaymentEvolution = () => {
   const handleNext = () => {
     if (currentType < paymentEvolutions.length - 1) {
       setCurrentType((prev) => prev + 1);
+      setExpanded(false);
     }
   };
 
   const handlePrev = () => {
     if (currentType > 0) {
       setCurrentType((prev) => prev - 1);
+      setExpanded(false);
     }
   };
 
   const handleStepClick = (index) => {
     setCurrentType(index);
+    setExpanded(false);
   };
 
+  const toggleExpanded = () => setExpanded(!expanded);
+
   const totalSteps = paymentEvolutions.length;
-  const gap = 50; // px
+  const gap = 50;
   const totalWidthVW = (totalSteps - 1) * stepWidth + ((totalSteps - 1) * gap) / (window.innerWidth / 100);
   const paddingRight = totalWidthVW;
 
-  // Swipeable options
   const handlers = useSwipeable({
-    onSwipedLeft:  handlePrev, // Swipe left
-    onSwipedRight:handleNext, // Swipe right
+    onSwipedLeft: handlePrev,
+    onSwipedRight: handleNext,
     preventDefaultTouchmoveEvent: true,
-    trackMouse: true, // Optional: Allows mouse events
+    trackMouse: true,
   });
 
   return (
@@ -55,7 +63,7 @@ const PaymentEvolution = () => {
           <div
             className="evolution__steps-track"
             style={{
-              transform: `translateX(calc(${currentType * (stepWidth)}vw + ${currentType * gap}px))`, // Include gap for each step
+              transform: `translateX(calc(${currentType * stepWidth}vw + ${currentType * gap}px))`,
               transition: "transform 0.3s ease",
               paddingRight: `${paddingRight}vw`,
             }}
@@ -63,9 +71,7 @@ const PaymentEvolution = () => {
             {paymentEvolutions.map((type, index) => (
               <div
                 key={index}
-                className={`evolution__step 
-                  ${index === currentType ? "evolution__step--active" : ""}
-                `}
+                className={`evolution__step ${index === currentType ? "evolution__step--active" : ""}`}
                 onClick={() => handleStepClick(index)}
               >
                 <div className="evolution__image-container">
@@ -76,6 +82,7 @@ const PaymentEvolution = () => {
               </div>
             ))}
           </div>
+
           <div className="evolution__indicators">
             {paymentEvolutions.map((_, index) => (
               <div
@@ -86,9 +93,30 @@ const PaymentEvolution = () => {
               />
             )).reverse()}
           </div>
+
           <div className="evolution__step-details">
             <h1>{paymentEvolutions[currentType].type}</h1>
-            <p>{paymentEvolutions[currentType].description}</p>
+            <div
+              className={`evolution__description `}
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: expanded || window.innerWidth > 768 ? "unset" : 2,
+                WebkitBoxOrient: "vertical",
+                overflow: expanded || window.innerWidth > 768 ? "visible" : "hidden",
+                textOverflow: "ellipsis",
+                height: expanded || window.innerWidth > 768 ? "auto" : "3em",
+                transition: "height 0.3s ease",
+              }}
+            >
+              {paymentEvolutions[currentType].description} 
+            </div>
+            <p className="expand-toggle" onClick={toggleExpanded}>
+            {expanded ? "Свернуть" : "Развернуть"}
+            <span>
+              {expanded ? <IoIosArrowUp /> : <IoIosArrowDown />}
+              </span>
+            </p>
+           
           </div>
         </div>
 
