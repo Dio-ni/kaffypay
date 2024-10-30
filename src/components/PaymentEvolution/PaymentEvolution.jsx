@@ -43,7 +43,7 @@ const PaymentEvolution = () => {
   const toggleExpanded = () => setExpanded(!expanded);
 
   const totalSteps = paymentEvolutions.length;
-  const gap = 50;
+  const gap = 40;
   const totalWidthVW = (totalSteps - 1) * stepWidth + ((totalSteps - 1) * gap) / (window.innerWidth / 100);
   const paddingRight = totalWidthVW;
   
@@ -71,11 +71,19 @@ const PaymentEvolution = () => {
             {paymentEvolutions.map((type, index) => (
               <div
                 key={index}
-                className={`evolution__step ${index === currentType ? "evolution__step--active" : ""}`}
+                className={`evolution__step ${index === currentType ? "": "evolution__step--nonactive"}`}
                 onClick={() => handleStepClick(index)}
               >
                 <div className="evolution__image-container">
-                  <img src={index === currentType ? type.hoverImg : type.img} alt={`Шаг ${index + 1}`} />
+                  <img src={type.img} alt={`Шаг ${index + 1}`} />
+                  {type.hoverImg ? 
+                  <img
+                  style={{
+                    zIndex: `${currentType == index ? 1:-1}`,
+                    
+                  }}
+                  className="hoverImg" src={type.hoverImg} alt={`Шаг ${index + 1}`} />
+                   : ""}
                   <div className="evolution__overlay" />
                 </div>
                 <p>{type.years}</p>

@@ -6,6 +6,9 @@
     align-items: center; 
     justify-content: center;
     flex-direction:column; 
+    @include respond(phone){
+        overflow: hidden;
+    }
 
 }
 .welcome {
@@ -19,13 +22,14 @@
     
     @include respond(phone){
         margin-bottom: 30px;
+        overflow:visible;
       }
       
     .hand-line {
         position: absolute;
         width: 30%;
         left: -10%;
-        top: 15%;
+        top: 5%;
         z-index: 10;
         img{
             width: 100%;
@@ -49,6 +53,10 @@
         position: absolute;
         left: -40%; 
         z-index: 10;
+        @include respond(phone){
+            
+            // overflow-anchor: hidden;
+        }
 
         img{
             width: 100%;
@@ -135,6 +143,9 @@
         .mobile-text{
             margin:  0;
             display: block;
+            @include respond(phone){
+                margin-top: 30px;
+            }
         }
         .welcome_center_text {
             display: none;

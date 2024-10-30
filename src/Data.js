@@ -40,7 +40,6 @@ export const paymentEvolutions=[
     { 
         id:2,
         img:Face_Recognition,
-        hoverImg:Face_RecognitionHover,
         years:"2013",
         type:"Face Pay",
         description:"В июле 2013 года Uniqul запустила первую в мире платежную систему с распознаванием лиц, что стало важным шагом к интеграции этой технологии в оплату.",
@@ -57,7 +56,6 @@ export const paymentEvolutions=[
     { 
       id:3,
       img:Phone,
-      hoverImg:PhoneHover,
       years:"1994-2010",
       type:"NFC и QR",
       description:"NFC, появившийся в 2000-х, применяется для бесконтактных платежей через карты и смартфон. QR-коды, разработанные в 1994 году в Японии, стали использоваться для платежей только с 2010-х.",
@@ -72,7 +70,6 @@ export const paymentEvolutions=[
     { 
         id:4,
         img:Cart,
-        hoverImg:CartHover,
         years:"1950",
         type:"Банковские карты",
         description:"Банковские карты появились в середине XX века. Diners Club выпустила первую кредитную карту в 1950 году, а в 1958 году Bank of America создал BankAmericard, ставшую позже Visa.",
@@ -86,7 +83,6 @@ export const paymentEvolutions=[
     { 
         id:5,
         img:Cash,
-        hoverImg:CashHover,
         years:"7 век",
         type:"Бумажные деньги",
         description:"Первые бумажные деньги появились в Китае в VII веке при династии Тан. К XI веку они стали официальным средством обмена.",
@@ -100,7 +96,6 @@ export const paymentEvolutions=[
     { 
         id:6,
         img:Coin,
-        hoverImg:CoinHover,
         years:"7 век до н.э.",
         type:"Монеты",
         description:"Первые металлические монеты появились в VII веке до н.э. в Лидии, на территории современной Турции. Они стали первым стандартизированным средством обмена.",
@@ -114,7 +109,6 @@ export const paymentEvolutions=[
     { 
       id:7,
       img:Bag,
-      hoverImg:BagHover,
       years:"Период неолита",
       type:"Бартер",
       description:"Бартер — древнейшая форма торговли, когда товары и услуги обменивались напрямую. Эта система существовала до появления денег, но имела сложности с оценкой и совпадением нужд.",

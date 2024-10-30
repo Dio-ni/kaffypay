@@ -21,13 +21,39 @@
         position: absolute;
         left: 5%;
         top:40%;
-        animation: bouncingLeft 4s linear infinite;
+        animation: bouncingLeft 3s linear infinite;
+
         @include respond(phone){
+          animation: bouncingLeft 3s infinite;
           width: 50%;
           top:60%;
         }
     }
     @keyframes bouncingLeft {
+        0% {
+          transform: translateY(30%);
+        }
+        50% {
+          transform: translateY(-30%);
+        }
+        100% {
+            transform: translateY(30%);
+          }
+    }
+    &_right{
+        position: absolute;
+        right: 5%;
+        top:60%;
+        animation: bouncingRight 4s linear infinite ;
+
+        @include respond(phone){
+          animation: bouncingRight 2s linear infinite ;
+          width: 50%;
+          top:40%;
+          z-index: 10;
+        }
+    }
+    @keyframes bouncingRight {
         0% {
           transform: translateY(20%);
         }
@@ -38,33 +64,12 @@
             transform: translateY(20%);
           }
     }
-    &_right{
-        position: absolute;
-        right: 5%;
-        top:60%;
-        animation: bouncingRight 5s linear infinite ;
-        @include respond(phone){
-          width: 50%;
-          top:40%;
-          z-index: 10;
-        }
-    }
-    @keyframes bouncingRight {
-        0% {
-          transform: translateY(15%);
-        }
-        50% {
-          transform: translateY(-10%);
-        }
-        100% {
-            transform: translateY(15%);
-          }
-    }
     .phone-emulator{
       @include respond(phone){
         width: 180%;
         position: relative;
-        bottom: 15%;
+        bottom: 0;
+        transform: translateY(-25%);
       }
     }
     &_text{
