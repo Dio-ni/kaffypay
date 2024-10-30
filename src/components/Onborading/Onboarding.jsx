@@ -62,7 +62,7 @@ const Onboarding = () => {
   });
 
   const gap=30;
-  const paddingLeft = `130vw`;
+  const paddingLeft = `132vw`;
 
 
   return (

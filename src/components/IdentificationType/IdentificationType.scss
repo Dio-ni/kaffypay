@@ -1,5 +1,6 @@
-
+@import "../../styles/mixins.scss";
 .identification{
+  overflow: hidden;
     &__container{
         display: flex;
         justify-content: center;
@@ -8,36 +9,77 @@
         margin-block: 60px;
         gap: 60px;
         text-align: center;
+        @include respond(phone){
+          justify-content: flex-start;
+          gap:24px;
+        }
+
 
         h3{
             font-size: 18px;
             font-weight: 600;
             color: #1ED768;
+
+            @include respond(phone){
+              font-size: 14px;
+            }
         }
         h1{
             font-size: 64px;
             font-weight: 600;
             letter-spacing: -2px;
+            @include respond(phone){
+              font-size: 24px;
+              letter-spacing: -1px;
+            }
         }
 
     }
-
+.controls{
+  display: flex;
+  gap:10px;
+  span{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border-radius:13px ;
+    background-color: #007AFF;
+    color: #fff;
+    padding: 13px;
+    // height: 44px;
+    // width: 44px;
+  }
+}
 .comparison-container {
     display: flex;
     justify-content: space-around;
     margin: 20px;
     gap:20px;
+   
   }
   
   .column {
     width: 30%;
-    padding: 10px;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @include respond(phone){
+      width: 80vw;
+
+    }
   }
-  
+  @include respond(phone){
+    
+    .props{
+      display: none;
+    }
+  }  
+  .options {
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+  }
   .column h2 {
     text-align: center;
     height: auto;
@@ -56,6 +98,10 @@
     background: #F5F5F7;
     padding: 20px;
     border-radius: 20px;
+
+    @include respond(phone){
+      background-color: #fff;
+    }
     
     span {
       font-size: 32px; 
@@ -67,6 +113,10 @@
     margin: 0 20px;
     list-style-type: none;
     padding: 0;
+
+    @include respond(phone){
+      margin: 0;
+    }
   }
   
   ul li {
@@ -79,7 +129,33 @@
 
     display: flex;              /* Use flexbox */
     align-items: center;   
-    text-align: left;  
+    text-align: left; 
+    
+    @include respond(phone){
+      gap: 10px;
+      border-bottom: 0;
+      .icon{
+        width: 44px;
+        height: 44px;
+        background-color: #fff;
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 19px;
+        color: #889097;
+      }
+      .type_description{
+        display: flex;
+        flex-direction: column;
+        color: #889097;
+        font-size: 14px;
+
+        .red{
+          font-size: 16px;
+        }
+      }
+    }
   }
   ul li:last-child {
     border-bottom: 0 solid #E7E9EA;
@@ -89,8 +165,19 @@
     color: #F63636;
   }
   
-  .type {
+  .type_block {
     background-color: #FBFBFD;
+    
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 100%; // Each block takes full width
+    box-sizing: border-box; 
+
+    @include respond(phone){
+      background-color: #F5F5F7;
+      // display: flex; 
+      transition: transform 0.3s ease-in-out;
+    }
   }
  
   
