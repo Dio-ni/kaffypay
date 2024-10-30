@@ -55,8 +55,8 @@ const Onboarding = () => {
 
   const toggleExpanded = () => setExpanded(!expanded);
   const handlers = useSwipeable({
-    onSwipedLeft: handlePrev,
-    onSwipedRight: handleNext,
+    onSwipedLeft: handleNext ,
+    onSwipedRight: handlePrev,
     preventDefaultTouchmoveEvent: true,
     trackMouse: true,
   });
