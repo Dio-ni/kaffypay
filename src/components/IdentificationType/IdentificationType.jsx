@@ -7,6 +7,7 @@ import { FaCircleCheck, FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { IoIosCloseCircle } from "react-icons/io";
 import { PiDetectiveFill, PiCopyFill, PiGlobeHemisphereWestFill, PiContactlessPaymentFill, PiSmileyFill, PiHandCoinsFill } from "react-icons/pi";
 import { HiLightningBolt } from "react-icons/hi";
+import { useSwipeable } from "react-swipeable";
 
 const identificationData = [
   {
@@ -55,12 +56,7 @@ const identificationData = [
     ]
   }
 ];
-const handlers = useSwipeable({
-  onSwipedLeft: handleNext,
-  onSwipedRight: handlePrevious,
-  preventDefaultTouchmoveEvent: true,
-  trackMouse: true,
-});
+
 
 const IdentificationType = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -76,6 +72,12 @@ const IdentificationType = () => {
       setCurrentIndex(currentIndex - 1);
     }
   };
+  const handlers = useSwipeable({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrevious,
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
 
   return (
     <section className="identification wrapper">
