@@ -11,10 +11,12 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
+
+
     @include respond(phone){
       padding-top:  30px;
       height: auto;
-      aspect-ratio: 1 / 1; 
+      aspect-ratio: 1 / 0.9; 
     }
 
     &_left{
@@ -65,11 +67,11 @@
           }
     }
     .phone-emulator{
+
       @include respond(phone){
-        width: 180%;
-        position: relative;
-        bottom: 0;
-        transform: translateY(-25%);
+        width: 90%;
+        z-index: 5;   
+        transform: translateY(-10%);     
       }
     }
     &_text{

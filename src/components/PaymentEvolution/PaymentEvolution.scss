@@ -6,7 +6,6 @@
   align-items: center;
   text-align: center;
   width: 100%;
-  overflow: hidden;
 
   &__container {
     margin-block: 100px;
@@ -48,11 +47,11 @@
   &__steps-track {
     display: flex;
     flex-direction: row-reverse;
-    gap: 40px;
     margin-block: 20px;
-    // @include respond(phone) {
-    //   padding-right: 150%;
-    // }
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    
   }
 
   &__step {
@@ -61,15 +60,13 @@
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    width: 20vw;
-    height: 20vw;
+    width: 35vw;
+    height: 35vw;
     border: 0.75px solid #e7e9ea;
     background-color: var(--back-grey);
     border-radius: 30px;
-    padding: 20px;
-    opacity: 1;
-    transform: scale(1.2);
     cursor: pointer;
+    padding-block: 40px;
 
     @include respond(phone) {
       width: 50vw;
@@ -77,7 +74,7 @@
     }
 
     p {
-      font-size: 26px;
+      font-size: 32px;
       font-weight: 400;
       @include respond(phone){
         font-size: 18px;
@@ -85,14 +82,24 @@
     }
 
     img {
-      width: 100%;
+      width: 80%;
     }
 
     &--nonactive {
-      transform: none; // Убираем увеличение
       background-color: #fff;
-      opacity: 0.7;
-      transform: scale(1);
+      transition: transform 0.5s ease; // Smooth scale transition
+      width: 25vw;
+      height: 25vw;
+      
+
+      img {
+        width: 70%;
+        opacity: 0.5;
+      }
+      @include respond(phone){
+        width: 40vw;
+        height: 40vw;
+      }
     }
   }
 
@@ -103,16 +110,24 @@
   &__step:first-child {
     overflow: hidden;
     justify-content: flex-end;
+    padding-bottom: 40px;
+    position: relative;
+
+    @include respond(phone){
+      padding-bottom: 18px;
+      
+    }
 
     img {
       position: absolute;
       top: 35%;
       left: 45%;
-      transform: translate(-50%, -50%);
+      width: 100%;
+      transform:scale(0.8) translate(-60%, -57%);
 
       @include respond(phone) {
-        width: 80%;
-        top: 37%;
+        width: 90%;
+        top: 30%;
         left: 45%;
       }
     }

@@ -9,9 +9,9 @@ const Application = () => {
         <img className="application_left" src={Magnum} alt="" />
         <img className="application_right" src={Nomad} alt="" />
         <div className="application_text">
-          <h4>ПРЕДСТАВЛЯЕМ</h4>
-          <h2>Приложение Alaqan</h2>
-          <p>SuperApp для упрощения вашей финансовой жизни</p>
+          <h4>INTRODUCING</h4>
+          <h2>Alaqan Mobile App</h2>
+          <p>SuperApp to simplify your financial life</p>
   
         </div>
         <img className="phone-emulator" src={Iphone_Emulator} alt="" />

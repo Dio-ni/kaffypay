@@ -1,7 +1,6 @@
 @import "../../styles/mixins.scss";
 
 .onboarding {
-  overflow: hidden;
 
   &__container {
     display: flex;
@@ -9,15 +8,14 @@
     align-items: center;
     text-align: center;
     margin-block: 100px;
-    max-width: 80%; // Limit container width
-    margin-inline: auto; // Center container
+    margin-inline: auto; 
 
     @include respond(phone){
       margin-block: 30px;
     }
 
     h2 {
-      font-size: 64px; // Title
+      font-size: 64px; 
       margin-bottom: 20px;
       font-weight: 600;
       letter-spacing: -2px;
@@ -37,7 +35,7 @@
       position: relative;
       max-width: 1000px; 
       margin: 0 auto; 
-      margin-top: 60px; // Add top margin for spacing
+      margin-top: 60px; 
       flex-direction: column;
       gap: 70px;
 
@@ -47,27 +45,26 @@
       }
 
       .steps-track {
+        position: relative; 
         display: flex;
-        transition: transform 0.5s ease; // Smooth transition for slide change
-        gap: 50px;
-        margin-left: 133%; // Shift steps track
-
-        // Adjust for responsiveness
-        @include respond(phone) {
-          gap: 30px; // Adjust gap for mobile
-        }
+        justify-content: center;
+        align-items: center;
+        gap: 2vw;
+        transition: "transform 0.3s ease",
+        
       }
 
       .step-details {
-        width: 100%;
+        width: 60%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
         h1{
           font-size: 36px;
           font-weight: 500;
-
+          margin-bottom: 20px;
           @include respond(phone){
             font-size: 18px;
             margin-bottom: 10px;
@@ -76,7 +73,7 @@
         .step-description{
           font-size: 18px;
           font-weight: 400;
-
+          height: 3em;
           @include respond(phone){
             font-size: 14px;
           }
@@ -104,12 +101,11 @@
       }
       .step-num {
         position: relative;
-        margin-bottom: 40px;
-        max-width: 200px;
-        width: 100%;
+        margin-bottom: 50px;
+        width: 90%;
 
         @include respond(phone){
-          margin-bottom: 30px;
+          max-width: 200px;
         }
 
         
@@ -166,41 +162,60 @@
       }
 
       .step {
-        width: 20vw; // Use vw for responsiveness
-        justify-content: flex-end;
-        flex-shrink: 0; 
+        width: 35vw;
+        height: 35vw;
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: end;
+        justify-content: flex-end;
         position: relative; 
         border: 1px solid #E7E9EA;
         border-radius: 20px;
+        background-color: var(--back-grey);
+        
+        cursor: pointer;
+
+        @include respond(phone){
+          width: 50vw;
+          height: 50vw;
+        }
 
         p {
-          font-size: 20px; // Text size
+          font-size: 20px; 
           font-weight: 500;
           margin-top: 10px;
+          @include respond(phone){
+            font-size: 18px;
+          }
         }
         
         img {
-          width: 70%;
-          opacity: 0.5;
+          width: 65%;
+          opacity: 1;
 
-          &:nth-child(4) {
-            height: 100%; // Full height for the last step
-            width: 100%;
-            padding: 0;
-          }
+          
         }
-
-        &--active {
-          transform: scale(1.2); // Scale active step
+        &:nth-child(4),&:nth-child(5) {
+         img{
+          height: 100%; // Full height for the last step
+          width: 100%;
+          padding: 0;
+          border-radius: inherit;
+         }
+          
+        }
+        &--nonactive {
+          background-color: #fff;
           transition: transform 0.5s ease; // Smooth scale transition
-          background-color: var(--back-grey); 
+          width: 25vw;
+          height: 25vw;
 
           img {
-            opacity: 1;
+            opacity: 0.5;
+          }
+          @include respond(phone){
+            width: 40vw;
+            height: 40vw;
           }
         }
       }

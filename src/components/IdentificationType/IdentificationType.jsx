@@ -110,16 +110,16 @@ const IdentificationType = () => {
           <div className="options column type" {...handlers}  style={{ transform: `translateX(-${currentIndex * 82.5}vw)`, transition: 'transform 0.3s ease-in-out' }}>
             {identificationData.map((type, index) => (
               <div key={index} className="type_block">
-                <div className="type_title">
+                <div className={`type_title ${index == 2 ? "alaqan-green": ""} `}>
                   <h2>{type.title}</h2>
                   <span><img src={type.icon} alt={`${type.title} Icon`} /></span>
                 </div>
                 <ul>
                   {type.properties.map((property, i) => (
                     <li key={i}>
-                      {property.icon && <span className="icon">{property.icon}</span>}
+                      {property.icon && <span className="icon mobile">{property.icon}</span>}
                       <p className="type_description">
-                        <span>{property.label}</span>
+                        <span className='mobile'>{property.label}</span>
                         <span className={property.colorClass || ""}>{property.value}</span>
                       </p>
                     </li>

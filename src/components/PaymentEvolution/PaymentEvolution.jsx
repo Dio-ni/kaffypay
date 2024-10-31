@@ -9,17 +9,9 @@ import { IoIosArrowUp } from "react-icons/io";
 
 const PaymentEvolution = () => {
   const [currentType, setCurrentType] = useState(0);
-  const [stepWidth, setStepWidth] = useState(window.innerWidth <= 768 ? 50 : 20);
   const [expanded, setExpanded] = useState(false); 
+  const stepWidth = window.innerWidth <= 768 ? 50: 35; // Step width based on viewport size
 
-  useEffect(() => {
-    const handleResize = () => {
-      setStepWidth(window.innerWidth <= 768 ? 50 : 20);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const handleNext = () => {
     if (currentType < paymentEvolutions.length - 1) {
@@ -57,15 +49,14 @@ const PaymentEvolution = () => {
   return (
     <section className="evolution wrapper">
       <div className="evolution__container">
-        <h2>Эволюция платежей</h2>
+        <h2>Payment Evolution</h2>
 
         <div className="evolution__steps-container" {...handlers}>
           <div
             className="evolution__steps-track"
             style={{
-              transform: `translateX(calc(${currentType * stepWidth}vw + ${currentType * gap}px))`,
-              transition: "transform 0.3s ease",
-              marginRight: `${paddingRight}vw`,
+              transform: `translateX(calc(-50% + ${ (currentType ) * (stepWidth-8)}vw + ${stepWidth/2}vw))`,
+              transition:` transform 0.2s ease`,
             }}
           >
             {paymentEvolutions.map((type, index) => (
@@ -104,6 +95,7 @@ const PaymentEvolution = () => {
 
           <div className="evolution__step-details">
             <h1>{paymentEvolutions[currentType].type}</h1>
+            <div>
             <div
               className={`evolution__description `}
               style={{
@@ -112,7 +104,7 @@ const PaymentEvolution = () => {
                 WebkitBoxOrient: "vertical",
                 overflow: expanded || window.innerWidth > 768 ? "visible" : "hidden",
                 textOverflow: "ellipsis",
-                height: expanded || window.innerWidth > 768 ? "auto" : "3em",
+                height: window.innerWidth > 768 ? "6em" : (expanded ? "auto" : "3em"),
                 transition: "height 0.3s ease",
               }}
             >
@@ -124,6 +116,7 @@ const PaymentEvolution = () => {
               {expanded ? <IoIosArrowUp /> : <IoIosArrowDown />}
               </span>
             </p>
+            </div>
            
           </div>
         </div>
@@ -131,15 +124,15 @@ const PaymentEvolution = () => {
         <div className="controls">
           <button
             className="prev"
-            onClick={handlePrev}
-            disabled={currentType === 0}
+            onClick={handleNext}
+            disabled={currentType === paymentEvolutions.length - 1}
           >
             Назад
           </button>
           <button
             className="next"
-            onClick={handleNext}
-            disabled={currentType === paymentEvolutions.length - 1}
+            onClick={handlePrev}
+            disabled={currentType === 0}
           >
             Далее
           </button>

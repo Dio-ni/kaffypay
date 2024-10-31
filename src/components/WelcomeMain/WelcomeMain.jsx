@@ -7,7 +7,7 @@ import HandLine from "../../assets/hand-line.png";
 
 const WelcomeMain = () => {
   const ref = useRef(null);
-  const textOptions = ["карт", "наличных",  "телефона"];
+  const textOptions = ["cards", "cash",  "phone"];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
@@ -66,8 +66,9 @@ const WelcomeMain = () => {
           <img className="hand-line" src={HandLine} alt="" />
         <div className="welcome_center_text">
           <h2>
-            Оплата ладонью вместо{" "}
+          Palm Payments without{" "}
             <span className={`fade-text ${fade ? "fade-in" : "fade-out"}`}
+            
             >
         {textOptions[currentIndex]}
       </span>

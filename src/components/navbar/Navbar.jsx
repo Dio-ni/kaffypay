@@ -8,19 +8,12 @@ import { useState } from 'react';
 
 const Navbar = () => {
     const [selectedLang,setSelectedLang]=useState(1);
-    const langs=['Рус','Eng'];  
+    const langs=['Ar','Eng'];  
   return (
     <header className="navbar wrapper">
         <nav className="navbar_container ">
         <a href="#" className="navbar_logo"><img src={Logo} alt="Logo"/></a>
-            {/* <ul className={`${showNav ? "show" : ""}`}>
-                <li onClick={()=> setShowNav(false)}><a href="#"><img src={Logo} alt="Logo"/></a></li>
-                <li onClick={()=> setShowNav(false)}><a href="#">Главная</a></li>
-                <li onClick={()=> setShowNav(false)}><a href="#">Для бизнеса</a></li>
-                <li onClick={()=> setShowNav(false)}><a href="#">Для Школы</a></li>
-                <li onClick={()=> setShowNav(false)}><a href="#">Оплата</a></li>
-                <li onClick={()=> setShowNav(false)}><a href="#">О компании</a></li>
-            </ul> */}
+            
             <div className="navbar_btns">
                 <div className="lng_btns">
                     {langs.map((lng,index)=>(
@@ -35,7 +28,7 @@ const Navbar = () => {
                         </a>
                     ))}
                 </div>
-                <a href="#" className="btn">Связаться</a>
+                <a href="#" className="btn">Get Started</a>
             </div>
 
         

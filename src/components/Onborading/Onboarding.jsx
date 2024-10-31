@@ -1,56 +1,27 @@
 import React, { useState } from "react";
 import "./Onboarding.scss";
-import onboarding1 from "../../assets/onboarding-1.png";
-import onboarding2 from "../../assets/onboarding-2.png";
-import onboarding3 from "../../assets/onboarding-3.png";
-import onboarding4 from "../../assets/onboarding-4.jpg";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { useSwipeable } from "react-swipeable";
+import { onboardingSlides } from "../../Data";
 
 const Onboarding = () => {
-  const slides = [
-    {
-      title: "Регистрация",
-      img: onboarding1,
-      description: "Пройдите простую регистрацию, введите номер телефона, подтвердите СМС кодом и введите имя."
-    },
-    {
-      title: "Добавьте карту",
-      img: onboarding2,
-      description: "Нажмите Добавить карту и введите реквизиты карты."
-    },
-    {
-      title: "Продолжите регистрацию",
-      img: onboarding3,
-      description: "Нажмите Отсканировать QR на главном экране."
-    },
-    {
-      title: "Сканируйте QR",
-      img: onboarding4,
-      description: "Наведите камеру на QR на терминале Alaqan, чтобы связать его с вашим аккаунтом."
-    },
-    {
-      title: "Сканируйте QR",
-      img: onboarding4,
-      description: "Наведите камеру на QR на терминале Alaqan, чтобы связать его с вашим аккаунтом."
-    },
-  ];
+  
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [expanded, setExpanded] = useState(false);
-  const stepWidth = window.innerWidth <= 768 ? 50 : 20; // Step width based on viewport size
+  const stepWidth = window.innerWidth <= 768 ? 50: 35; // Step width based on viewport size
 
   const handleNext = () => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    setCurrentSlide((prev) => (prev === onboardingSlides.length - 1 ? 0 : prev + 1));
   };
 
   const handlePrev = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    setCurrentSlide((prev) => (prev === 0 ? onboardingSlides.length - 1 : prev - 1));
   };
 
   const handleStepClick = (index) => {
-    setCurrentSlide(index); // Update the current slide based on the clicked index
+    setCurrentSlide(index); 
   };
 
   const toggleExpanded = () => setExpanded(!expanded);
@@ -61,33 +32,29 @@ const Onboarding = () => {
     trackMouse: true,
   });
 
-  const gap=30;
-  const paddingLeft = `132vw`;
 
 
   return (
     <section className="onboarding wrapper">
       <div className="onboarding__container">
-        <h2>Онбординг в приложении</h2>
+        <h2>App Onboarding</h2>
 
         <div className="steps-container" {...handlers}>
           <div
             className="steps-track"
             style={{
-              transform: `translateX(calc(${-currentSlide * stepWidth}vw - ${currentSlide * gap}px))`,
-              transition: "transform 0.3s ease",
-              paddingLeft: paddingLeft,
+              transform: `translateX(calc(50% - ${ (currentSlide ) * (stepWidth-8)}vw - ${stepWidth/2}vw))`,
+              transition: ` transform 0.2s ease`,
             }}
+
           >
-            {slides.map((slide, index) => (
+            {onboardingSlides.map((slide, index) => (
               <div
                 key={index}
-                className={`step ${index === currentSlide ? "step--active" : ""}`}
+                className={`step ${index === currentSlide ? "": "step--nonactive"}`}
                 onClick={() => handleStepClick(index)}
-                style={{ width: `${stepWidth}vw` }} // Set width of each step
               >
                 <img src={slide.img} alt={`Шаг ${index + 1}`} />
-                <div className="overlay" /> {/* Overlay for the image */}
               </div>
             ))}
           </div>
@@ -96,20 +63,21 @@ const Onboarding = () => {
             <div className="step-num">
               <div className="line"></div>
               <ul>
-                {slides.map((_, index) => (
+                {onboardingSlides.map((_, index) => (
                   <li
                     key={index}
                     className={`step ${index === currentSlide ? "num-active" : ""}`}
-                    onClick={() => handleStepClick(index)} // Add click handler to each step
-                    style={{ cursor: "pointer" }} // Change cursor to pointer for clickability
+                    onClick={() => handleStepClick(index)} 
+                    style={{ cursor: "pointer" }} 
                   >
-                    {index + 1} {/* Display the step number */}
+                    {index + 1} 
                   </li>
                 ))}
               </ul>
             </div>
 
-            <h1>{slides[currentSlide].title}</h1>
+            <h1>{onboardingSlides[currentSlide].title}</h1>
+            <div>
             <div
               className="step-description"
               style={{
@@ -119,10 +87,11 @@ const Onboarding = () => {
                 overflow: expanded || window.innerWidth > 768 ? "visible" : "hidden",
                 textOverflow: "ellipsis",
                 transition: "height 0.3s ease",
-                height: expanded || window.innerWidth > 768 ? "auto" : "3em",
+                height: window.innerWidth > 768 ? "3em " : (expanded ? "auto" : "3em"),
               }}
             >
-              {slides[currentSlide].description}
+              {onboardingSlides[currentSlide].description}
+            
             </div>
             {window.innerWidth <= 768 && ( // Show only on mobile
               <p className="expand-toggle" onClick={toggleExpanded}>
@@ -132,6 +101,8 @@ const Onboarding = () => {
                 </span>
               </p>
             )}
+            </div>
+            
           </div>
         </div>
 
@@ -146,7 +117,7 @@ const Onboarding = () => {
           <button
             className="next"
             onClick={handleNext}
-            disabled={currentSlide === slides.length - 1} // Disable on the last slide
+            disabled={currentSlide === onboardingSlides.length - 1} // Disable on the last slide
           >
             Далее
           </button>
