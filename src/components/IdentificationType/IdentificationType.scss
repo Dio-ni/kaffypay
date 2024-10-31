@@ -50,8 +50,6 @@
     background-color: #007AFF;
     color: #fff;
     padding: 13px;
-    // height: 44px;
-    // width: 44px;
   }
 }
 .comparison-container {
@@ -119,27 +117,28 @@
     padding: 0;
 
     @include respond(phone){
-      margin: 0;
+      margin: 20px 0;
     }
   }
   
   ul li {
     font-size: 16px;
     font-weight: 400;
-    height: 60px;
-    margin-bottom: 10px;
+    height: 60px;;
     font-size: 1rem;
     border-bottom: 1px solid #E7E9EA;
-
     display: flex;              /* Use flexbox */
     align-items: center;   
     text-align: left; 
     
     @include respond(phone){
+      
+      align-items: start;
+      margin-bottom: 20px;
       gap: 10px;
       border-bottom: 0;
       .icon{
-        width: 44px;
+        flex: 0 0 44px;
         height: 44px;
         background-color: #fff;
         border-radius: 20px;
@@ -152,9 +151,16 @@
       .type_description{
         display: flex;
         flex-direction: column;
-        color: #889097;
         font-size: 14px;
 
+        .value-inline {
+          display: inline-flex; // Keeps elements inline and aligned
+          gap: 4px;             // Space between the parts, if needed
+        }
+        
+        & span:first-child{
+          color: #889097;
+        }
         .red{
           font-size: 16px;
         }

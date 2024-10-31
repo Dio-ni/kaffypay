@@ -37,7 +37,11 @@ const identificationData = [
       { label: "Скорость", value: "Средняя", icon: <HiLightningBolt /> },
       { label: "Бесконтактность", value: "Да", icon: <PiContactlessPaymentFill /> },
       { label: "Психологический комфорт", value: "Сложности для людей с высоким и низким ростом", colorClass: "red", icon: <PiSmileyFill /> },
-      { label: "Базовая стоимость решения", value: "2D – Средняя, 3D – Высокая", colorClass: "red", icon: <PiHandCoinsFill /> },
+    { 
+        label: "Базовая стоимость решения", 
+        value: { text: "2D – Средняя,", highlighted: "3D – Высокая" },  // Separated the highlighted text
+        icon: <PiHandCoinsFill /> 
+      },  
     ]
   },
   {
@@ -115,16 +119,24 @@ const IdentificationType = () => {
                   <span><img src={type.icon} alt={`${type.title} Icon`} /></span>
                 </div>
                 <ul>
-                  {type.properties.map((property, i) => (
-                    <li key={i}>
-                      {property.icon && <span className="icon mobile">{property.icon}</span>}
-                      <p className="type_description">
-                        <span className='mobile'>{property.label}</span>
+                {type.properties.map((property, i) => (
+                  <li key={i}>
+                    {property.icon && <span className="icon mobile">{property.icon}</span>}
+                    <p className="type_description">
+                      <span className="mobile">{property.label}</span>
+                      {typeof property.value === "object" ? (
+                        <>
+                          <span>{property.value.text}</span>
+                          <span className="red"> {property.value.highlighted}</span>
+                        </>
+                      ) : (
                         <span className={property.colorClass || ""}>{property.value}</span>
-                      </p>
-                    </li>
-                  ))}
-                </ul>
+                      )}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+
               </div>
             ))}
           </div>
