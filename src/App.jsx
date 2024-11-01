@@ -1,5 +1,5 @@
 import Navbar from "./components/navbar/Navbar";
-import WelcomeMain from "./components/WelcomeMain/WelcomeMain";
+import WelcomeMain from "./components/WelcomePay/WelcomeMain";
 import PaymentEvolution from "./components/PaymentEvolution/PaymentEvolution";
 import Application from "./components/Application/Application";
 import Onboarding from "./components/Onborading/Onboarding";
@@ -25,7 +25,7 @@ const App = () => {
     <TerminalType />
     <IdentificationType />
     <FAQ />
-    {/* <Feadback /> */}
+    <Feadback />
     
     <Footer />
     </>

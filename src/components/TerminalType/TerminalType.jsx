@@ -55,7 +55,7 @@ const TerminalType = () => {
               src={MobileTerminal}
               alt=""
               style={{
-                transform: isExpanded[0] ? "translateY(-10px) scale(1.1)" : "translateY(-60px) scale(1.1)",
+                transform: isExpanded[0] ? "translateY(-10px) scale(1.1)" : "translateY(-30px) scale(1.1)",
                 transition: "transform 0.3s linear",
               }}
             />
@@ -91,14 +91,14 @@ const TerminalType = () => {
                 />
               </div>
             </div>
-            <p className={isExpanded[1] ? "visible" : "hidden"}>
+            <p className={isExpanded[1] ? "vis" : "hid"}>
               Настольный терминал с чековым принтером.
             </p>
             <img
               src={StationaryTerminal}
               alt=""
               style={{
-                transform: isExpanded[1] ? "translateY(-30px) scale(0.9)" : "translateY(-60px) scale(0.9)",
+                transform: isExpanded[1] ? "translateY(30px) scale(0.9)" : "translateY(100px) scale(0.9)",
                 transition: "transform 0.3s linear",
               }}
             />
