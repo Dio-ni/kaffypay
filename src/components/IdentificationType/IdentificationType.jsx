@@ -132,6 +132,7 @@ function IdentificationType  ()  {
 
           <div className="options column type" 
                 role="button"
+                {...handlers}
                 tabIndex={0}
                 onMouseDown={handlers.onMouseDown}
                 onTouchStart={handlers.onTouchStart}

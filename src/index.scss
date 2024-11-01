@@ -39,6 +39,11 @@ body{
     margin: 0 auto;
     padding: 0 35px;
 }
+@media (max-width: 767px) {
+    .container {
+        padding: 0 20px;
+    }
+}
 #root{
     overflow: hidden;
 }
@@ -75,9 +80,7 @@ img{
         color:var(--cultured) !important;
     }
 }
-.container{
-    padding: 0 !important;
-}
+
 .section_wrapper{
     max-width: 1300px;
     padding-inline: 5rem;

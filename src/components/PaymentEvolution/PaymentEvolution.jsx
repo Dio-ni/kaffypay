@@ -52,7 +52,8 @@ function PaymentEvolution  ()  {
       <div className="evolution__container">
         <h2>Payment Evolution</h2>
 
-        <div className="evolution__steps-container" 
+        <div className="evolution__steps-container"
+        {...handlers} 
          role="button"
          tabIndex={0}
          onMouseDown={handlers.onMouseDown}

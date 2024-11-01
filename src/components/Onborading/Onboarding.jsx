@@ -41,6 +41,7 @@ function Onboarding  ()  {
         <h2>App Onboarding</h2>
 
         <div className="steps-container" 
+        {...handlers} 
         role="button"
         tabIndex={0}
         onMouseDown={handlers.onMouseDown}
