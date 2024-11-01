@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import "./IdentificationType.scss";
-import Alaqan from "../../assets/images/identification_type/Alaqan.svg";
-import FaceId from "../../assets/images/identification_type/FaceId.svg";
-import Fingerprint from "../../assets/images/identification_type/Fingerprint.svg";
 import { FaCircleCheck, FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { IoIosCloseCircle } from "react-icons/io";
 import { PiDetectiveFill, PiCopyFill, PiGlobeHemisphereWestFill, PiContactlessPaymentFill, PiSmileyFill, PiHandCoinsFill } from "react-icons/pi";
 import { HiLightningBolt } from "react-icons/hi";
 import { useSwipeable } from "react-swipeable";
 
+import "./IdentificationType.scss";
+import Alaqan from "../../assets/images/identification_type/Alaqan.svg";
+import FaceId from "../../assets/images/identification_type/FaceId.svg";
+import Fingerprint from "../../assets/images/identification_type/Fingerprint.svg";
+
 const identificationData = [
   {
+    id:"touch_id",
     title: "Touch ID",
     icon: Fingerprint,
     properties: [
@@ -26,6 +28,7 @@ const identificationData = [
     ]
   },
   {
+    id:"face_id",
     title: "Face ID",
     icon: FaceId,
     properties: [
@@ -45,6 +48,7 @@ const identificationData = [
     ]
   },
   {
+    id:"palm_id",
     title: "Palm ID",
     icon: Alaqan,
     properties: [
@@ -62,7 +66,7 @@ const identificationData = [
 ];
 
 
-const IdentificationType = () => {
+function IdentificationType  ()  {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -84,20 +88,35 @@ const IdentificationType = () => {
   });
 
   return (
-    <section className="identification wrapper">
+    <section className="identification container">
       <div className="identification__container">
-        <div className="title">
+        <div className="identification_title">
           <h3>СРАВНЕНИЕ</h3>
           <h1>Способы идентификации</h1>
         </div>
         <div className="controls">
-          <span onClick={handlePrevious}><FaAngleLeft /></span>
-          <span onClick={handleNext}><FaAngleRight /></span>
+          <span
+            role="button"
+            tabIndex={0}
+            onClick={handlePrevious}
+            onKeyDown={(e) => e.key === 'Enter' && handlePrevious()}
+          >
+            <FaAngleLeft />
+          </span>
+          <span
+            role="button"
+            tabIndex={0}
+            onClick={handleNext}
+            onKeyDown={(e) => e.key === 'Enter' && handleNext()}
+          >
+            <FaAngleRight />
+          </span>
         </div>
+
 
         <div className="comparison-container">
           <div className="column props">
-            <span></span>
+            <span />
             <ul>
               <li>FAR</li>
               <li>FRR</li>
@@ -111,20 +130,31 @@ const IdentificationType = () => {
             </ul>
           </div>
 
-          <div className="options column type" {...handlers}  style={{ transform: `translateX(-${currentIndex * 82.5}vw)`, transition: 'transform 0.3s ease-in-out' }}>
+          <div className="options column type" 
+                role="button"
+                tabIndex={0}
+                onMouseDown={handlers.onMouseDown}
+                onTouchStart={handlers.onTouchStart}
+                onTouchEnd={handlers.onTouchEnd}
+                onTouchMove={handlers.onTouchMove}
+                onKeyDown={(e) => {
+                  if (e.key === 'ArrowRight') handleNext();
+                  if (e.key === 'ArrowLeft') handlePrevious();
+                }}
+                style={{ transform: `translateX(-${currentIndex * 82.5}vw)`, transition: 'transform 0.3s ease-in-out' }}>
             {identificationData.map((type, index) => (
-              <div key={index} className="type_block">
-                <div className={`type_title ${index == 2 ? "alaqan-green": ""} `}>
+              <div key={type.id} className="type_block">
+                <div className={`type_title ${index === 2 ? "alaqan-green": ""} `}>
                   <h2>{type.title}</h2>
                   <span><img src={type.icon} alt={`${type.title} Icon`} /></span>
                 </div>
                 <ul>
-                {type.properties.map((property, i) => (
-                  <li key={i}>
+                {type.properties.map((property) => (
+                  <li key={property.label}>
                     {property.icon && <span className="icon mobile">{property.icon}</span>}
                     <p className="type_description">
                       <span className="mobile">{property.label}</span>
-                      {typeof property.value === "object" ? (
+                      { property.value &&  typeof property.value === "object" ? (
                         <>
                           <span>{property.value.text}</span>
                           <span className="red"> {property.value.highlighted}</span>

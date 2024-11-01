@@ -2,7 +2,7 @@
 
 .onboarding {
 
-  &__container {
+  &__inner {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +11,7 @@
     margin-inline: auto; 
 
     @include respond(phone){
-      margin-block: 30px;
+      margin: 60px 0 30px;
     }
 
     h2 {
@@ -40,8 +40,8 @@
       gap: 70px;
 
       @include respond(phone){
-        margin-top: 50px;
-        gap:60px;
+        margin-top: 30px;
+        gap:30px;
       }
 
       .steps-track {
@@ -49,7 +49,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 2vw;
+        gap: 20px;
         transition: "transform 0.3s ease",
         
       }
@@ -73,13 +73,15 @@
         .step-description{
           font-size: 18px;
           font-weight: 400;
-          height: 3em;
+          line-height: 1.5;
           @include respond(phone){
             font-size: 14px;
           }
         }
       }
       .expand-toggle{
+        background-color:white;
+        width: 100%;
         margin-top: 10px;
         display: none;
         color: #889097;
@@ -101,11 +103,12 @@
       }
       .step-num {
         position: relative;
-        margin-bottom: 50px;
+        margin-bottom: 60px;
         width: 90%;
 
         @include respond(phone){
           max-width: 200px;
+          margin-bottom: 30px;
         }
 
         
@@ -128,6 +131,7 @@
           align-items: center;
           justify-content: space-between;
           z-index: 2;
+          padding-left: 0;
 
           li {
             width: 56px;
@@ -138,11 +142,14 @@
             justify-content: center;
             border-radius: 20px;
             border: 1px solid #E7E9EA;
-            color: #889097;
-            position: relative; 
             background-color: white;
+              
+            position: relative; 
             z-index: 2;
             font-weight: 500;
+            button{
+              color: #889097;
+            }
 
             @include respond(tab-port){
               width: 22px;
@@ -153,8 +160,11 @@
             }
 
             &.num-active {
+              button{
+                color: #fff;
+              }
               background: #007AFF;
-              color: #fff;
+              
             }
           }
         }
@@ -162,8 +172,8 @@
       }
 
       .step {
-        width: 35vw;
-        height: 35vw;
+        width: 520px;
+        height:  520px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -176,8 +186,8 @@
         cursor: pointer;
 
         @include respond(phone){
-          width: 50vw;
-          height: 50vw;
+          width: 200px;
+          height: 200px;
         }
 
         p {
@@ -207,15 +217,15 @@
         &--nonactive {
           background-color: #fff;
           transition: transform 0.5s ease; // Smooth scale transition
-          width: 25vw;
-          height: 25vw;
+          width: 390px;
+          height: 390px;
 
           img {
             opacity: 0.5;
           }
           @include respond(phone){
-            width: 40vw;
-            height: 40vw;
+            width: 150px;
+            height: 150px;
           }
         }
       }
@@ -241,7 +251,7 @@
       }
 
       .prev {
-        background-color: var(--back-grey);
+        background-color: #F5F5F7;
         color: #1D1D1F;
 
         &:hover {

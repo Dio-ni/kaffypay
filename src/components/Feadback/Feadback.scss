@@ -2,16 +2,23 @@
 
 .feadback_section{
     background: #F5F5F7;
+    padding-block: 30px;
 }
 .feadback{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding-block: 60px;
     align-items: center;
+    
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 35px;
 
     @include respond(tab-port){
         flex-direction: column;
+        section{
+            padding: 0;
+        }
     }
 
     &_info{
@@ -20,11 +27,18 @@
             color: #1ED768;
             font-size: 18px;
             font-weight: 600;
+            @include respond(phone){
+                font-size: 14px;
+                margin-bottom: 14px;
+            }
         }
         h1{ 
             font-size: 64px;
             font-weight: 600;
             letter-spacing: -2px;
+            @include respond(phone){
+                font-size: 24px;
+            }
         }
 
         .details{
@@ -32,21 +46,44 @@
             flex-direction: column;
             gap:30px;
             margin-block: 60px;
-
+            @include respond(phone){
+                margin-block: 20px;
+                gap:12px;
+                .addres_text{
+                    padding: 16px 0;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    h4{
+                        font-size: 18px;
+                    }
+                    p{
+                        font-size: 14px;
+                    }
+                }
+            }
+            
             >div{
+                height: 100px;
                 display: inline-flex;
                 gap:10px;
 
+                @include respond(phone){
+                    gap:20px;
+                }
                 span{
                     width: 44px;
                     height: 44px;
                     background: #ffffff;
-                    border-radius: 100%;
+                    border-radius: 100px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     font-size: 24px;
                     color: #007AFF;
+                    @include respond(phone){
+                        height: 100%;
+                    }
                 }
                 
                 h4{
@@ -69,6 +106,11 @@
         padding: 30px;
         background: #ffffff;
         border-radius: 30px;
+
+        @include respond(phone){
+            
+            width: 100%;
+        }
         .inputs{
             margin: 30px 0;
             display: flex;

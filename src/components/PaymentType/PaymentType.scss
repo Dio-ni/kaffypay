@@ -1,19 +1,21 @@
 @import "../../styles/mixins.scss";
 
 .payment_type {
-    @include backgroundImage("../../assets/payment-type-back.png", 405px, 100%);
-    overflow: hidden;
-    height: 405px;
-    position: relative;
-
-    @include respond(phone) {
-        height: auto;
-        aspect-ratio: 1 / 0.9; // Make it a square aspect ratio on mobile
+    &_inner{
+        @include backgroundImage("../../assets/payment-type-back.png", 405px, 100%);
+        overflow: hidden;
+        height: 405px;
+        position: relative;
+        border-radius: 30px;
+        @include respond(phone) {
+            height: 280px;// Make it a square aspect ratio on mobile
+        }    
     }
+    
 
     &_container {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: flex-end; // Aligned to bottom initially
 
         @include respond(phone) {
@@ -29,7 +31,7 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        margin-block: 110px;
+        margin: 110px;
         gap: 20px;
         font-weight: 600;
 
@@ -38,6 +40,7 @@
             align-items: center;
             text-align: center;
             margin-block: 30px;
+            gap:15px;
         }
 
         p {
@@ -112,9 +115,9 @@
             z-index: 5;
 
             @include respond(phone) {
-                // bottom: 10%;
+                
                 left: 10%;
-                width: 55%;
+                width: 170px;
             }
         }
 
@@ -125,12 +128,12 @@
             z-index: 0;
 
             @include respond(phone) {
-                position: static;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                bottom: 40%;
-                width: 80%;
+                bottom: 10%;
+                left: 27%;
+                width: 180px;
             }
         }
 
@@ -142,8 +145,8 @@
 
             @include respond(phone) {
                 top: 35%;
-                right: 5%;
-                width: 40%;
+                right: 15%;
+                width: 130px;
             }
         }
     }

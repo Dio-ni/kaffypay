@@ -1,11 +1,13 @@
-import "./WelcomeMain.scss";
-import Hand from "../../assets/Hand.png";
-import Terminal from "../../assets/Terminal.png";
 import React, { useRef, useState, useEffect } from "react";
+
+import "./WelcomeMain.scss";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Hand from "../../assets/Hand.png";
+
+import Terminal from "../../assets/Terminal.png";
 import HandLine from "../../assets/hand-line.png";
 
-const WelcomeMain = () => {
+function  WelcomeMain ()  {
   const ref = useRef(null);
   const textOptions = ["cards", "cash",  "phone"];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,7 +39,8 @@ const WelcomeMain = () => {
   const terminalRotation = useTransform(scrollYProgress, [0, 1], [-25, 25]);
 
   return (
-    <div className="scroll-container" ref={ref}>
+    <div className="welcome-main">
+    <div className="container" ref={ref}>
       <div className="mobile-text">
       <h2>
         Оплата ладонью вместо{" "}
@@ -90,6 +93,8 @@ const WelcomeMain = () => {
           <img src={Terminal} alt="Terminal" />
         </motion.div>
       </section>
+    </div>
+    
     </div>
   );
 };

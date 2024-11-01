@@ -1,17 +1,29 @@
 @import "../../styles/mixins.scss";
 
 .FAQ{
+    margin-block: 100px;
+    @include respond(phone){
+        margin-block: 60px;
+    }
+    &_inner{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap:60px;
-    margin-block: 60px;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
 
     @include respond(phone){
         gap:24px;
-        margin-block: 30px;
+        margin-block: 60px;
     }
+    }
+    section{
+        padding: 0;
+    }
+    
 
     &_title{
         text-align: center;
@@ -28,6 +40,7 @@
 
             @include respond(phone){
                 font-size: 24px;
+                margin-top:14px ;
             }
         }
     }
@@ -92,6 +105,7 @@
         width: 80%;
         @include respond(phone){
             width: 100%;
+            gap:10px;
         }
     }
     .faq-row-wrapper{

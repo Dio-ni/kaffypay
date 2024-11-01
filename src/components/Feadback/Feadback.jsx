@@ -5,10 +5,10 @@ import AlaqanLogoFull from "../../assets/images/home/alaqan-full.svg";
 import "./Feadback.scss";
 
 
-const Feadback = () => {
+function Feadback  ()  {
   return (
     
-    <section className='feadback_section'>
+    <div className='feadback_section '>
         <div className=" feadback wrapper">
         <div className="feadback_info ">
             <h3>КОНТАКТЫ</h3>
@@ -51,10 +51,10 @@ const Feadback = () => {
                     </div>
 
             
-            <button>Отправить</button>
+            <button type='submit' >Отправить</button>
         </form>
         </div>
-    </section>
+    </div>
   )
 }
 

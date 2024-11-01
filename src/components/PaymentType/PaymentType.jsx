@@ -1,24 +1,26 @@
 import "./PaymentType.scss";
-import LineFront from "../../assets/images/payment_type/Line_front.png";
-import LineBack from "../../assets/images/payment_type/Line_back.png";
+import { motion, useInView } from "framer-motion";
+import React, { useRef } from "react";
+
+// import LineFront from "../../assets/images/payment_type/Line_front.png";
+// import LineBack from "../../assets/images/payment_type/Line_back.png";
 import PaymentList from "../../assets/images/payment_type/payment_list.png";
 import BankCard from "../../assets/images/payment_type/bank_card.png";
-import BankCard2 from "../../assets/images/payment_type/bank_card_2.png"; 
-import BankCard3 from "../../assets/images/payment_type/bank_card_3.png"; 
-import BankCard4 from "../../assets/images/payment_type/bank_card_4.png"; // Импорт нового изображения
+// import BankCard2 from "../../assets/images/payment_type/bank_card_2.png"; 
+// import BankCard3 from "../../assets/images/payment_type/bank_card_3.png"; 
+// import BankCard4 from "../../assets/images/payment_type/bank_card_4.png"; // Импорт нового изображения
 import Notification from "../../assets/images/payment_type/notification.png";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
-import { useRef, useState } from "react";
 
-const PaymentType = () => {
+function PaymentType ()  {
   const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(true);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const isInView = useInView(ref, { once: true });
 
-  const { scrollY } = useScroll({
-    target: ref,
-    offset: ["start start", "end end"],
-  });
+  // const [isScrolled, setIsScrolled] = useState(false);
+
+  // const { scrollY } = useScroll({
+  //   target: ref,
+  //   offset: ["start start", "end end"],
+  // });
 
  
   const fadeInFromBottom = {
@@ -36,16 +38,18 @@ const PaymentType = () => {
   };
 
   // Анимация движения по оси X
-  const notificationX = useTransform(scrollY, [0,1], ["0%", "10%"]);
+  // const notificationX = useTransform(scrollY, [0,1], ["0%", "10%"]);
   
-  const bankCardX = useTransform(scrollY, [0,1], ["0%", "50%"]);
-  const bankCard2X = useTransform(scrollY, [3600,3800], ["0%", "30%"]); // Движение для BankCard2
-  const bankCard3X = useTransform(scrollY, [3600,3800], ["0%", "10%"]); // Движение для BankCard2
-  const bankCard4X = useTransform(scrollY, [3600,3800], ["0%", "-10%"]); // Движение для BankCard2
+  // const bankCardX = useTransform(scrollY, [0,1], ["0%", "50%"]);
+  // const bankCard2X = useTransform(scrollY, [3600,3800], ["0%", "30%"]); // Движение для BankCard2
+  // const bankCard3X = useTransform(scrollY, [3600,3800], ["0%", "10%"]); // Движение для BankCard2
+  // const bankCard4X = useTransform(scrollY, [3600,3800], ["0%", "-10%"]); // Движение для BankCard2
 
 
   return (
-    <section className="payment_type section_wrapper" ref={ref}>
+    <div className="payment_type" ref={ref}>
+    <div className="container">
+      <div className="payment_type_inner">
       <div className=" payment_type_container">
         <div className="payment_type_left">
         <p>PAYMENT METHOD</p>
@@ -75,7 +79,7 @@ const PaymentType = () => {
             src={PaymentList}
             alt="PaymentList"
             initial="hidden"
-            animate={isVisible ? "visible" : "hidden"}
+            animate={isInView ? "visible" : "hidden"}
             variants={fadeInFromBottom}
           />
 
@@ -102,9 +106,9 @@ const PaymentType = () => {
             src={BankCard}
             alt="BankCard"
             initial="hidden"
-            animate={isVisible ? "visible" : "hidden"} // Появление
+            animate={isInView ? "visible" : "hidden"} // Появление
             variants={fadeInFromBottomCard2}
-            style={isScrolled ? { x: bankCard4X } : {}} // Движение при прокрутке
+            // style={isScrolled ? { x: bankCard4X } : {}} // Движение при прокрутке
           />
 
           {/* Анимация появления и движения Notification */}
@@ -113,13 +117,15 @@ const PaymentType = () => {
             src={Notification}
             alt="Notification"
             initial="hidden"
-            animate={isVisible ? "visible" : "hidden"} // Появление
+            animate={isInView ? "visible" : "hidden"} // Появление
             variants={fadeInFromTop}
-            style={isScrolled ? { x: notificationX } : {}} // Движение при прокрутке
+            // style={isScrolled ? { x: notificationX } : {}} // Движение при прокрутке
           />
         </div>
       </div>
-    </section>
+      </div>
+    </div>
+    </div>
   );
 };
 

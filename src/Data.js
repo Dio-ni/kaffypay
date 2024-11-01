@@ -1,16 +1,10 @@
-import Carts from "./assets/carts.png";
 import Phone from "./assets/images/payment_evolution/grey/phone-.png";
-import PhoneHover from "./assets/images/payment_evolution/hover/phone.png";
-import Face_Recognition from "./assets/images/payment_evolution/grey/face-recognition-biometrics.png";
-import Face_RecognitionHover from "./assets/images/payment_evolution/hover/face-recognition-biometrics.png";
+import FaceRecognition from "./assets/images/payment_evolution/grey/face-recognition-biometrics.png";
 import Terminal from "./assets/images/payment_evolution/grey/terminal.png";
 import TerminalHover from "./assets/images/payment_evolution/hover/terminal.png";
 import Cart from "./assets/images/payment_evolution/grey/image 71.png";
-import CartHover from "./assets/images/payment_evolution/hover/image 71.png";
 import Cash from "./assets/images/payment_evolution/grey/cash-banknote.png";
-import CashHover from "./assets/images/payment_evolution/hover/cash-banknote.png";
 import Coin from "./assets/images/payment_evolution/grey/coin-money.png";
-import CoinHover from "./assets/images/payment_evolution/hover/coin-money.png";
 
 import onboarding1 from "./assets/images/onboarding/on1.png";
 import onboarding2 from "./assets/images/onboarding/on2.png";
@@ -18,7 +12,6 @@ import onboarding3 from "./assets/images/onboarding/on3.png";
 import onboarding4 from "./assets/images/onboarding/on4.png";
 import onboarding5 from "./assets/images/onboarding/on5.png";
 import Bag from "./assets/images/payment_evolution/grey/grain-bag.png";
-import BagHover from "./assets/images/payment_evolution/hover/grain-bag.png";
 
 
 
@@ -35,7 +28,7 @@ export const paymentEvolutions=[
     
     { 
         id:2,
-        img:Face_Recognition,
+        img:FaceRecognition,
         years:"2013",
         type:"Face Pay",
         description:"In July 2013, Uniqul launched the world's first facial recognition payment system, which was an important step towards integrating this technology into payment.",
