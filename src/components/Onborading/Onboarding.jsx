@@ -1,12 +1,15 @@
+ /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from "react";
 import "./Onboarding.scss";
 import { IoIosArrowDown,IoIosArrowUp  } from "react-icons/io";
+import { useTranslation } from 'react-i18next';
 
 import { useSwipeable } from "react-swipeable";
 import { onboardingSlides } from "../../Data";
 
 function Onboarding  ()  {
-  
+  const { t,i18n } = useTranslation();
+    
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [expanded, setExpanded] = useState(false);
@@ -38,16 +41,12 @@ function Onboarding  ()  {
     <div className="onvoarding">
     <div className="container">
       <div className="onboarding__inner">
-        <h2>App Onboarding</h2>
+        <h2>{t('app_onboarding')} </h2>
 
         <div className="steps-container" 
-        {...handlers} 
         role="button"
         tabIndex={0}
-        onMouseDown={handlers.onMouseDown}
-        onTouchStart={handlers.onTouchStart}
-        onTouchEnd={handlers.onTouchEnd}
-        onTouchMove={handlers.onTouchMove}
+        {...handlers}
         onKeyDown={(e) => {
           if (e.key === 'ArrowRight') handleNext();
           if (e.key === 'ArrowLeft') handlePrev();
@@ -73,7 +72,7 @@ function Onboarding  ()  {
                   }
                 }}
               >
-                <img src={slide.img} alt={`Шаг ${index + 1}`} />
+                <img src={i18n.language === 'ru' ? slide.imgRu : slide.imgEn} alt={`Шаг ${index + 1}`} />
               </div>
             ))}
           </div>
@@ -105,7 +104,7 @@ function Onboarding  ()  {
               </ul>
             </div>
 
-            <h1>{onboardingSlides[currentSlide].title}</h1>
+            <h1>{t(onboardingSlides[currentSlide].title)}</h1>
             <div>
             <div
               className="step-description"
@@ -119,7 +118,7 @@ function Onboarding  ()  {
                 height: window.innerWidth > 768 ? "3em " : (expanded ? "auto" : "3.3em"),
               }}
             >
-              {onboardingSlides[currentSlide].description}
+              {t(onboardingSlides[currentSlide].description)}
             
             </div>
             {window.innerWidth <= 768 && ( 
@@ -130,8 +129,8 @@ function Onboarding  ()  {
                 aria-expanded={expanded} // Указываем состояние кнопки
                 aria-label={expanded ? "Свернуть описание" : "Развернуть описание"} // Добавляем описания для доступности
               >
-                {expanded ? "Свернуть" : "Развернуть"}
-                <span>
+               {expanded ? t('collapse') : t('expand')}
+               <span>
                   {expanded ? <IoIosArrowUp /> : <IoIosArrowDown />}
                 </span>
               </button>
@@ -149,7 +148,7 @@ function Onboarding  ()  {
             onClick={handlePrev}
             disabled={currentSlide === 0} // Disable on the first slide
           >
-            Назад
+            {t('btn_prev')}
           </button>
           <button
             type="button"
@@ -157,7 +156,7 @@ function Onboarding  ()  {
             onClick={handleNext}
             disabled={currentSlide === onboardingSlides.length - 1} // Disable on the last slide
           >
-            Далее
+            {t('btn_next')}
           </button>
         </div>
       </div>

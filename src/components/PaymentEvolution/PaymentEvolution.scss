@@ -1,6 +1,7 @@
 @import "../../styles/mixins.scss"; // Обновленный импорт
 
 .evolution {
+  overflow: hidden;
   &_inner{
     display: flex;
     justify-content: center;
@@ -63,7 +64,7 @@
     width: 520px;
     height: 520px;
     border: 0.75px solid #e7e9ea;
-    background-color: var(--back-grey);
+    background-color: #F5F5F7;
     border-radius: 30px;
     cursor: pointer;
     padding-block: 40px;
@@ -94,7 +95,7 @@
 
       img {
         width: 70%;
-        opacity: 0.5;
+        opacity: 0.4;
       }
       @include respond(phone){
         width: 150px;
@@ -207,7 +208,7 @@
   &__indicator {
     width: 32px;
     height: 8px;
-    background-color: #ccc;
+    background-color: #E7E9EA;
     border-radius: 100px;
 
     @include respond(phone){

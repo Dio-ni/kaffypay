@@ -1,68 +1,49 @@
 @import "../../styles/mixins.scss";
-.navbar{
-    padding-block: 0.6rem;
-    position: relative;
-    justify-content: space-around;
-    align-items: center;
+@import "../../styles/vars";
 
-    @include respond(phone){
-        padding-block: 20px;
-        // border-bottom: 1px solid black;
-        box-shadow: 0px 1px 4px 0px #88909733;
-
-    }
-    &_container{
-      display: flex;
-      justify-content: space-between;
-    
-    }
-    &_logo {
+.language_menu {
+    .lng_btns {
+        color: black;
+        background-color: $color-gray-300; // Assuming this variable is defined in your vars
+        border-radius: 16px;
         display: flex;
+        align-items: center;
         justify-content: center;
-
-        img{
-        width: 200px;
-        @include respond(phone){
-            width: 120px;
+        gap: 0.5rem;
+        padding: 4px;
+        @media (max-width: 767px){
+            color: #fff;
+            background-color: #1E1E1E;
         }
-        
-    }}
 
-    &_btns {
-            display: flex;
-            align-items: center;
-            gap:1.5rem;
+        button {
+            width: 30%;
+            padding: 8px;
+            text-align: center;
+            background-color: transparent;
+            border: none; // Remove border for a cleaner look
+            border-radius: 12px;
+            cursor: pointer; // Change cursor to indicate button interaction
+            &.lang { // Change to use SCSS nesting for the class
+                background-color: white; // Background color for selected language
+            }
 
+            &:hover {
+                background-color: lighten($color-gray-300, 10%); // Lighten the background on hover
+            }
             @include respond(phone){
-                gap:10px;
+                color:#fff;
+
+                &.lang { // Change to use SCSS nesting for the class
+                    background-color: #343434; // Background color for selected language
+                }
+    
+                &:hover {
+                    background-color: lighten(#1E1E1E, 10%); // Lighten the background on hover
+                }
             }
-            a{
-                text-transform: capitalize;
-                color: var(--black);
-                font-size: 14px;
-            }
-           
+            
+
         }
-       
-        .lng_btns{
-            color:black;
-            background-color: var(--back-grey);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap:0.5rem;
-            padding: 4px;
-            a{
-                padding: 8px;
-                width: 56px;
-                text-align: center;
-                
-                border-radius: 12px;
-            }
-            .lang{
-                background-color: white;
-            }
-        }
-   
+    }
 }

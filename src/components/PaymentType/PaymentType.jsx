@@ -1,27 +1,21 @@
 import "./PaymentType.scss";
 import { motion, useInView } from "framer-motion";
 import React, { useRef } from "react";
+import { useTranslation } from 'react-i18next';
 
-// import LineFront from "../../assets/images/payment_type/Line_front.png";
-// import LineBack from "../../assets/images/payment_type/Line_back.png";
-import PaymentList from "../../assets/images/payment_type/payment_list.png";
-import BankCard from "../../assets/images/payment_type/bank_card.png";
-// import BankCard2 from "../../assets/images/payment_type/bank_card_2.png"; 
-// import BankCard3 from "../../assets/images/payment_type/bank_card_3.png"; 
-// import BankCard4 from "../../assets/images/payment_type/bank_card_4.png"; // Импорт нового изображения
-import Notification from "../../assets/images/payment_type/notification.png";
+import PaymentListRu from "../../assets/images/payment_type/ru/payment_list.png";
+import BankCardRu from "../../assets/images/payment_type/ru/bank_card.png";
+import NotificationRu from "../../assets/images/payment_type/ru/notification.png";
+
+import PaymentListEn from "../../assets/images/payment_type/eng/payment_list.png";
+import BankCardEn from "../../assets/images/payment_type/eng/bank_card.png";
+import NotificationEn from "../../assets/images/payment_type/eng/notification.png";
 
 function PaymentType ()  {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-
-  // const [isScrolled, setIsScrolled] = useState(false);
-
-  // const { scrollY } = useScroll({
-  //   target: ref,
-  //   offset: ["start start", "end end"],
-  // });
-
+  const { t , i18n} = useTranslation();
+  
  
   const fadeInFromBottom = {
     hidden: { opacity: 0, y: 100 },
@@ -52,9 +46,12 @@ function PaymentType ()  {
       <div className="payment_type_inner">
       <div className=" payment_type_container">
         <div className="payment_type_left">
-        <p>PAYMENT METHOD</p>
-          <h2>Any Card
-          Will Do</h2>
+        <p>{t('payment_method')}</p>
+          <h2 
+         style={{
+          maxWidth: i18n.language === 'ru' ? '100%' : '300px'
+        }}
+         >{t('any_card_will_do')}</h2>
         </div>
         <div className="payment_type_right">
           {/* <div className="line">
@@ -76,7 +73,7 @@ function PaymentType ()  {
           {/* Появление PaymentList */}
           <motion.img
             className="payment_list"
-            src={PaymentList}
+            src={i18n.language === 'ru' ? PaymentListRu:PaymentListEn}
             alt="PaymentList"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -103,7 +100,7 @@ function PaymentType ()  {
           /> */}
           <motion.img
             className="bank_card"
-            src={BankCard}
+            src={i18n.language === 'ru' ? BankCardRu: BankCardEn}
             alt="BankCard"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"} // Появление
@@ -114,7 +111,7 @@ function PaymentType ()  {
           {/* Анимация появления и движения Notification */}
           <motion.img
             className="notification"
-            src={Notification}
+            src={i18n.language === 'ru' ? NotificationRu:NotificationEn}
             alt="Notification"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"} // Появление

@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa6"; 
+import { useTranslation } from 'react-i18next';
+
 import "./TerminalType.scss";
-import MobileTerminal from "../../assets/images/terminal_type/terminal1.png";
-import StationaryTerminal from "../../assets/images/terminal_type/terminal2.png";
+import MobileTerminalRu from "../../assets/images/terminal_type/ru/terminal1.png";
+import StationaryTerminalRu from "../../assets/images/terminal_type/ru/terminal2.png";
+import MobileTerminalEn from "../../assets/images/terminal_type/eng/terminal1.png";
+import StationaryTerminalEn from "../../assets/images/terminal_type/eng/terminal2.png";
 
 function TerminalType  ()  {
   const [isExpanded, setIsExpanded] = useState([false, false]); 
 
+  const { t,i18n } = useTranslation();
   const toggleExpand = (index) => {
     const newState = [...isExpanded];
     newState[index] = !newState[index]; 
@@ -20,7 +25,7 @@ function TerminalType  ()  {
         <div className="terminal_type_inner">
           
       <div className="terminal_type_container ">
-        <h2>Терминал для каждого</h2>
+        <h2>{t('terminal_for_everyone')} </h2>
         <div className="terminals">
         <div
             className="terminals_card"
@@ -32,7 +37,7 @@ function TerminalType  ()  {
             <div className="back_circle"/>
             <div>
             <div className="card_text">
-              <h2>Мобильный</h2>
+              <h2>{t('mobile_terminal')}</h2>
               <div
                 className="circle_plus"
                 
@@ -53,14 +58,14 @@ function TerminalType  ()  {
               </div>
             </div>
             <p className={window.innerWidth <= 768 ? "" : (isExpanded[0] ? "vis" : "hid")}>
-              Компактный переносной терминал, удобен в любых условиях и месте.
+              {t('mobile_text')}
             </p>
             </div>
             <img
-              src={MobileTerminal}
+              src={i18n.language === 'ru' ? MobileTerminalRu:MobileTerminalEn}
               alt=""
               style={{
-                transform: window.innerWidth <= 768 ? "" :( isExpanded[0] ? "translateY(40px) " : "translateY(-10px)"),
+                transform: window.innerWidth <= 768 ? "" :( isExpanded[0] ? "translateY(50px) " : "translateY(-15px)"),
                 transition: "transform 0.3s ease-in-out",
               }}
             />
@@ -77,7 +82,7 @@ function TerminalType  ()  {
             <div>
             <div className="card_text">
               
-              <h2>Стационарный</h2>
+              <h2>{t('stationary_terminal')}</h2>
               <div
                 className="circle_plus"
                 
@@ -98,14 +103,14 @@ function TerminalType  ()  {
               </div>
             </div>
             <p className={ window.innerWidth <= 768 ? "" : (isExpanded[1] ? "vis" : "hid")}>
-              Настольный терминал с чековым принтером.
+                  {t('stationary_text')}
             </p>
             </div>
             <img
-              src={StationaryTerminal}
+              src={i18n.language === 'ru' ? StationaryTerminalRu:StationaryTerminalEn}
               alt=""
               style={{
-                transform: window.innerWidth <= 768 ? "" : ( isExpanded[1] ? "translateY(30px) scale(0.8) rotate(15deg) " : "translateY(-20px) scale(0.8) rotate(15deg) ") ,
+                transform: window.innerWidth <= 768 ? "" : ( isExpanded[1] ? "translateY(60px) scale(0.8) rotate(15deg) " : " scale(0.8) rotate(15deg) ") ,
                 transition: "transform 0.3s ease-in-out",
               }}
             />

@@ -49,13 +49,14 @@
         position: absolute;
         right: 5%;
         top:60%;
+        z-index: 10;
         animation: bouncingRight 4s linear infinite ;
 
         @include respond(phone){
           animation: bouncingRight 2s linear infinite ;
           width: 50%;
           top:40%;
-          z-index: 10;
+          z-index: 20;
         }
     }
     @keyframes bouncingRight {

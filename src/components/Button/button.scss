@@ -1,0 +1,56 @@
+@import "/src/assets/styles/vars";
+
+.button {
+  padding: 11px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.button_color_secondary {
+  background: $color-blue;
+  color: $color-white;
+  transition: .3s background ease;
+
+  &:hover {
+    background: $color-blue-hover;
+  }
+}
+
+.button_color_black {
+  background: $color-black;
+  color: $color-white;
+}
+
+.button_color_white {
+  background: $color-white;
+  color: $color-black;
+  z-index: 1;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.button_rounded_xs {
+  border-radius: 1rem;
+}
+
+.button_rounded_sm {
+  border-radius: 1.25rem;
+  padding: 20px 40px;
+}
+
+.button_rounded_md {
+  border-radius: 2.5rem;
+}
+
+.button_rounded_lg {
+  border-radius: 100px;
+}
+
+.button__img {
+  margin-right: 6px;
+}

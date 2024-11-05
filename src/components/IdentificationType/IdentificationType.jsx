@@ -1,4 +1,7 @@
+ /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { FaCircleCheck, FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { IoIosCloseCircle } from "react-icons/io";
 import { PiDetectiveFill, PiCopyFill, PiGlobeHemisphereWestFill, PiContactlessPaymentFill, PiSmileyFill, PiHandCoinsFill } from "react-icons/pi";
@@ -12,61 +15,63 @@ import Fingerprint from "../../assets/images/identification_type/Fingerprint.svg
 
 const identificationData = [
   {
-    id:"touch_id",
-    title: "Touch ID",
+    id: "touch_id",
+    title: 'description_titles.t2.title',
     icon: Fingerprint,
     properties: [
-      { label: "FAR", value: "0,001%", colorClass: "red", icon: <FaCircleCheck /> },
-      { label: "FRR", value: "0,06%", colorClass: "red", icon: <IoIosCloseCircle /> },
-      { label: "Возможность фальсификации", value: "Открытая биометрия", colorClass: "red", icon: <PiDetectiveFill /> },
-      { label: "Неизменность", value: "Порезы, воспаления и прочее меняют структуру", colorClass: "red", icon: <PiCopyFill /> },
-      { label: "Внешние факторы", value: "Влажность, грязь", colorClass: "red", icon: <PiGlobeHemisphereWestFill /> },
-      { label: "Скорость", value: "Высокая", icon: <HiLightningBolt /> },
-      { label: "Бесконтактность", value: "Нет", colorClass: "red", icon: <PiContactlessPaymentFill /> },
-      { label: "Психологический комфорт", value: "Антисанитария, ассоциация с криминалистикой", colorClass: "red", icon: <PiSmileyFill /> },
-      { label: "Базовая стоимость решения", value: "Низкая", icon: <PiHandCoinsFill /> },
+      { label: "FAR", value: 'description_titles.t2.far', colorClass: "red", icon: <FaCircleCheck /> },
+      { label: "FRR", value: 'description_titles.t2.frr', colorClass: "red", icon: <IoIosCloseCircle /> },
+      { label: "Возможность фальсификации", value: 'description_titles.t2.falsification_possibility', colorClass: "red", icon: <PiDetectiveFill /> },
+      { label: "Неизменность", value: 'description_titles.t2.immutability', colorClass: "red", icon: <PiCopyFill /> },
+      { label: "Внешние факторы", value: 'description_titles.t2.external_factors', colorClass: "red", icon: <PiGlobeHemisphereWestFill /> },
+      { label: "Скорость", value: 'description_titles.t2.authentication_speed', icon: <HiLightningBolt /> },
+      { label: "Бесконтактность", value: 'description_titles.t2.contactless_authentication', colorClass: "red", icon: <PiContactlessPaymentFill /> },
+      { label: "Психологический комфорт", value: 'description_titles.t2.psychological_comfort', colorClass: "red", icon: <PiSmileyFill /> },
+      { label: "Базовая стоимость решения", value: 'description_titles.t2.basic_cost', icon: <PiHandCoinsFill /> },
     ]
   },
   {
-    id:"face_id",
-    title: "Face ID",
+    id: "face_id",
+    title: 'description_titles.t3.title',
     icon: FaceId,
     properties: [
-      { label: "FAR", value: "0,001%", colorClass: "red", icon: <FaCircleCheck /> },
-      { label: "FRR", value: "2,5%", colorClass: "red", icon: <IoIosCloseCircle /> },
-      { label: "Возможность фальсификации", value: "Динамичная видимая биометрия", colorClass: "red", icon: <PiDetectiveFill /> },
-      { label: "Неизменность", value: "Меняется в течение всей жизни", colorClass: "red", icon: <PiCopyFill /> },
-      { label: "Внешние факторы", value: "Аксессуары, волосы", colorClass: "red", icon: <PiGlobeHemisphereWestFill /> },
-      { label: "Скорость", value: "Средняя", icon: <HiLightningBolt /> },
-      { label: "Бесконтактность", value: "Да", icon: <PiContactlessPaymentFill /> },
-      { label: "Психологический комфорт", value: "Сложности для людей с высоким и низким ростом", colorClass: "red", icon: <PiSmileyFill /> },
-    { 
+      { label: "FAR", value: 'description_titles.t3.far', colorClass: "red", icon: <FaCircleCheck /> },
+      { label: "FRR", value: 'description_titles.t3.frr', colorClass: "red", icon: <IoIosCloseCircle /> },
+      { label: "Возможность фальсификации", value: 'description_titles.t3.falsification_possibility', colorClass: "red", icon: <PiDetectiveFill /> },
+      { label: "Неизменность", value: 'description_titles.t3.immutability', colorClass: "red", icon: <PiCopyFill /> },
+      { label: "Внешние факторы", value: 'description_titles.t3.external_factors', colorClass: "red", icon: <PiGlobeHemisphereWestFill /> },
+      { label: "Скорость", value: 'description_titles.t3.authentication_speed', icon: <HiLightningBolt /> },
+      { label: "Бесконтактность", value: 'description_titles.t3.contactless_authentication', icon: <PiContactlessPaymentFill /> },
+      { label: "Психологический комфорт", value: 'description_titles.t3.psychological_comfort', colorClass: "red", icon: <PiSmileyFill /> },
+      { 
         label: "Базовая стоимость решения", 
-        value: { text: "2D – Средняя,", highlighted: "3D – Высокая" },  // Separated the highlighted text
+        value: 'description_titles.t3.basic_cost', 
         icon: <PiHandCoinsFill /> 
       },  
     ]
   },
   {
-    id:"palm_id",
-    title: "Palm ID",
+    id: "palm_id",
+    title: 'description_titles.t4.title',
     icon: Alaqan,
     properties: [
-      { label: "FAR", value: "0,0008%", icon: <FaCircleCheck /> },
-      { label: "FRR", value: "0,01%", icon: <IoIosCloseCircle /> },
-      { label: "Возможность фальсификации", value: "Статичная невидимая биометрия", icon: <PiDetectiveFill /> },
-      { label: "Неизменность", value: "Только глубокие порезы ладони (редкий случай)", icon: <PiCopyFill /> },
-      { label: "Внешние факторы", value: "–", icon: <PiGlobeHemisphereWestFill /> },
-      { label: "Скорость", value: "Высокая", icon: <HiLightningBolt /> },
-      { label: "Бесконтактность", value: "Да", icon: <PiContactlessPaymentFill /> },
-      { label: "Психологический комфорт", value: "Новинка для пользователей", icon: <PiSmileyFill /> },
-      { label: "Базовая стоимость решения", value: "Средняя", icon: <PiHandCoinsFill /> },
+      { label: "FAR", value: 'description_titles.t4.far', icon: <FaCircleCheck /> },
+      { label: "FRR", value: 'description_titles.t4.frr', icon: <IoIosCloseCircle /> },
+      { label: "Возможность фальсификации", value: 'description_titles.t4.falsification_possibility', icon: <PiDetectiveFill /> },
+      { label: "Неизменность", value: 'description_titles.t4.immutability', icon: <PiCopyFill /> },
+      { label: "Внешние факторы", value: 'description_titles.t4.external_factors', icon: <PiGlobeHemisphereWestFill /> },
+      { label: "Скорость", value: 'description_titles.t4.authentication_speed', icon: <HiLightningBolt /> },
+      { label: "Бесконтактность", value: 'description_titles.t4.contactless_authentication', icon: <PiContactlessPaymentFill /> },
+      { label: "Психологический комфорт", value: 'description_titles.t4.psychological_comfort', icon: <PiSmileyFill /> },
+      { label: "Базовая стоимость решения", value: 'description_titles.t4.basic_cost', icon: <PiHandCoinsFill /> },
     ]
   }
 ];
 
 
+
 function IdentificationType  ()  {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -91,8 +96,8 @@ function IdentificationType  ()  {
     <section className="identification container">
       <div className="identification__container">
         <div className="identification_title">
-          <h3>СРАВНЕНИЕ</h3>
-          <h1>Способы идентификации</h1>
+          <h3>{t('comparison')}</h3>
+          <h1>{t('identification_methods')}</h1>
         </div>
         <div className="controls">
           <span
@@ -118,35 +123,27 @@ function IdentificationType  ()  {
           <div className="column props">
             <span />
             <ul>
-              <li>FAR</li>
-              <li>FRR</li>
-              <li>Возможность фальсификации</li>
-              <li>Неизменность</li>
-              <li>Внешние факторы</li>
-              <li>Скорость</li>
-              <li>Бесконтактность</li>
-              <li>Психологический комфорт</li>
-              <li>Базовая стоимость решения</li>
+              <li> {t('description_titles.t1.far')}</li>
+              <li>{t('description_titles.t1.frr')}</li>
+              <li>{t('description_titles.t1.falsification_possibility')}</li>
+              <li>{t('description_titles.t1.immutability')}</li>
+              <li>{t('description_titles.t1.external_factors')}</li>
+              <li>{t('description_titles.t1.authentication_speed')}</li>
+              <li>{t('description_titles.t1.contactless_authentication')}</li>
+              <li>{t('description_titles.t1.psychological_comfort')}</li>
+              <li>{t('description_titles.t1.basic_cost')}</li>
             </ul>
           </div>
 
           <div className="options column type" 
                 role="button"
-                {...handlers}
                 tabIndex={0}
-                onMouseDown={handlers.onMouseDown}
-                onTouchStart={handlers.onTouchStart}
-                onTouchEnd={handlers.onTouchEnd}
-                onTouchMove={handlers.onTouchMove}
-                onKeyDown={(e) => {
-                  if (e.key === 'ArrowRight') handleNext();
-                  if (e.key === 'ArrowLeft') handlePrevious();
-                }}
+                {...handlers}
                 style={{ transform: `translateX(-${currentIndex * 82.5}vw)`, transition: 'transform 0.3s ease-in-out' }}>
             {identificationData.map((type, index) => (
               <div key={type.id} className="type_block">
                 <div className={`type_title ${index === 2 ? "alaqan-green": ""} `}>
-                  <h2>{type.title}</h2>
+                  <h2>{t(type.title)}</h2>
                   <span><img src={type.icon} alt={`${type.title} Icon`} /></span>
                 </div>
                 <ul>
@@ -154,14 +151,14 @@ function IdentificationType  ()  {
                   <li key={property.label}>
                     {property.icon && <span className="icon mobile">{property.icon}</span>}
                     <p className="type_description">
-                      <span className="mobile">{property.label}</span>
+                      <span className="mobile mobile_span_title">{t(property.label)}</span>
                       { property.value &&  typeof property.value === "object" ? (
                         <>
-                          <span>{property.value.text}</span>
-                          <span className="red"> {property.value.highlighted}</span>
+                          <span>{t(property.value.text)}</span>
+                          <span className="red"> {t(property.value.highlighted)}</span>
                         </>
                       ) : (
-                        <span className={property.colorClass || ""}>{property.value}</span>
+                        <span className={property.colorClass || ""}>{t(property.value)}</span>
                       )}
                     </p>
                   </li>

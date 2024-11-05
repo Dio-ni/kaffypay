@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { useTranslation } from 'react-i18next';
 import alaqanFullSrc from '../../assets/images/home/alaqan-full-white.svg';
 import igSrc from '../../assets/images/icons/ig.svg';
 import ytSrc from '../../assets/images/icons/yt.svg';

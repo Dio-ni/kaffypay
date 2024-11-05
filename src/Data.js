@@ -1,106 +1,118 @@
 import Phone from "./assets/images/payment_evolution/grey/phone-.png";
 import FaceRecognition from "./assets/images/payment_evolution/grey/face-recognition-biometrics.png";
 import Terminal from "./assets/images/payment_evolution/grey/terminal.png";
-import TerminalHover from "./assets/images/payment_evolution/hover/terminal.png";
+import TerminalHoverRu from "./assets/images/payment_evolution/hover/ru/terminal.png";
+import TerminalHoverEng from "./assets/images/payment_evolution/hover/eng/terminal.png";
 import Cart from "./assets/images/payment_evolution/grey/image 71.png";
 import Cash from "./assets/images/payment_evolution/grey/cash-banknote.png";
 import Coin from "./assets/images/payment_evolution/grey/coin-money.png";
 
-import onboarding1 from "./assets/images/onboarding/on1.png";
-import onboarding2 from "./assets/images/onboarding/on2.png";
-import onboarding3 from "./assets/images/onboarding/on3.png";
-import onboarding4 from "./assets/images/onboarding/on4.png";
-import onboarding5 from "./assets/images/onboarding/on5.png";
+import onboarding1en from "./assets/images/onboarding/eng/on1.png";
+import onboarding2en from "./assets/images/onboarding/eng/on2.png";
+import onboarding3en from "./assets/images/onboarding/eng/on3.png";
+import onboarding4en from "./assets/images/onboarding/eng/on4.png";
+import onboarding5en from "./assets/images/onboarding/eng/on5.png";
+
+import onboarding1ru from "./assets/images/onboarding/ru/on1.png";
+import onboarding2ru from "./assets/images/onboarding/ru/on2.png";
+import onboarding3ru from "./assets/images/onboarding/ru/on3.png";
+import onboarding4ru from "./assets/images/onboarding/ru/on4.png";
+import onboarding5ru from "./assets/images/onboarding/ru/on5.png";
 import Bag from "./assets/images/payment_evolution/grey/grain-bag.png";
 
 
 
 
-export const paymentEvolutions=[
-    { 
-        id:1,
-        img:Terminal,
-        hoverImg:TerminalHover,
-        years:"2024",
-        type:"Alaqan Pay",
-        description:"In 2018, Alaqan began developing palm vein biometrics. After 6 years, the product has become an accurate and fast payment system. In 2024, the first payment points appeared in Kazakhstan and spread around the world.",
-    },
-    
-    { 
-        id:2,
-        img:FaceRecognition,
-        years:"2013",
-        type:"Face Pay",
-        description:"In July 2013, Uniqul launched the world's first facial recognition payment system, which was an important step towards integrating this technology into payment.",
 
-    },
-    { 
-      id:3,
-      img:Phone,
-      years:"1994-2010",
-      type:"NFC и QR",
-      description:"NFC, which appeared in the 2000s, is used for contactless payments via cards and smartphones.QR codes, developed in 1994 in Japan, have been used for payments only since the 2010s."
+
+
+export const paymentEvolutions=[
+  { 
+      id:1,
+      img:Terminal,
+      hoverImgRu:TerminalHoverRu,
+      hoverImgEng:TerminalHoverEng,
+      years:"2024",
+      type:'evolutions.e1.type',
+      description:'evolutions.e1.text',
   },
-    { 
-        id:4,
-        img:Cart,
-        years:"1950",
-        type:"Bank Cards",
-        description:"Bank cards appeared in the middle of the XX century.Diners Club issued the first credit card in 1950, and in 1958, Bank of America created BankAmericard, which later became Visa.",
-    },
-    { 
-        id:5,
-        img:Cash,
-        years:"7th century",
-        type:"Paper Money",
-        description:"The first paper money appeared in China in the 7th century during the Tang Dynasty. By the 11th century, they had become an official medium of exchange.",
-    },
-    { 
-        id:6,
-        img:Coin,
-        years:"7th century BC",
-        type:"Coins",
-        description:"The first metal coins appeared in the VII century BC in Lydia, on the territory of modern Turkey. They became the first standardized medium of exchange."
-    },
-    { 
-      id:7,
-      img:Bag,
-      years:"Neolithic",
-      type:"Barter",
-      description:"Barter is the oldest form of trade, when goods and services were exchanged directly. This system existed before the advent of money, but had difficulties with assessing and matching needs."
-    }
-    
+  
+  { 
+      id:2,
+      img:FaceRecognition,
+      years:"2013",
+      type:'evolutions.e2.type',
+      description:'evolutions.e2.text',
+  },
+  { 
+    id:3,
+    img:Phone,
+    years:"1994-2010",
+    type:'evolutions.e3.type',
+    description:'evolutions.e3.text',},
+  { 
+      id:4,
+      img:Cart,
+      years:"1950",
+      type:'evolutions.e4.type',
+      description:'evolutions.e4.text',},
+  { 
+      id:5,
+      img:Cash,
+      years:'evolutions.e5.years',
+      type:'evolutions.e5.type',
+      description:'evolutions.e5.text', },
+  { 
+      id:6,
+      img:Coin,
+      years:'evolutions.e6.years',
+      type:'evolutions.e6.type',
+      description:'evolutions.e6.text',},
+  { 
+    id:7,
+    img:Bag,
+    years:'evolutions.e7.years',
+    type:'evolutions.e7.type',
+    description:'evolutions.e7.text',}
+  
 
 ];
 
 export const onboardingSlides = [
   {
-    title: "Sign up",
-    img: onboarding1,
-    description:"Go through a simple registration, enter your phone number, confirm with an SMS code and enter your name.",
+    title: 'onboarding.o1.sign_up',
+    imgRu: onboarding1ru,
+    imgEn: onboarding1en,
+    description:'onboarding.o1.text',
 
   },
   {
-    title: "Add a card",
-    img: onboarding2,
-    description: "Click Add Card and enter the card details.",
+    title: 'onboarding.o2.add_card',
+    imgRu: onboarding2ru,
+    imgEn: onboarding2en,
+    description:'onboarding.o2.text',
   },
   {
-    title: "Continue registration",
-    img: onboarding3,
-    description:"Click Scan QR on the home screen.",
+    title: 'onboarding.o3.type',
+    imgRu: onboarding3ru,
+    imgEn: onboarding3en,
+    description:'onboarding.o3.text',
   },
   {
-    title: "Scan the QR code",
-    img: onboarding4,
-    description:"Point the camera at the QR code on the Alaqan terminal to link it to your account."
+    title: 'onboarding.o4.type',
+    imgRu: onboarding4ru,
+    imgEn: onboarding4en,
+    description:'onboarding.o4.text'
   },
   {
-    title: "Done",
-    img: onboarding5,
-    description:"Scan biometrics and pay with your palm.",
+    title: 'onboarding.o5.type',
+    imgRu: onboarding5ru,
+    imgEn: onboarding5en,
+    description:'onboarding.o5.text',
   },
 ];
+
+
 export const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
